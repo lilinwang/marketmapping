@@ -8,7 +8,7 @@ class Ajax extends CI_Controller {
     }
 	function get_img(){	
 			$data=file_get_contents($_POST['url']);
-			//$data = eval("(" + data + ")");
+			/*//$data = eval("(" + data + ")");
 			$array=json_decode($data,true);
 			
 			//$picture = imagecreatefrompng($array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path']);
@@ -35,8 +35,8 @@ class Ajax extends CI_Controller {
 
 			imagepng($newPicture,'F:\wamp\www\marketmapping\image.png');
 			imagedestroy($newPicture);
-			imagedestroy($picture);
-			//echo $data;
+			imagedestroy($picture);*/
+			echo $data;
 		
 	}
     function get_focus()

@@ -10,8 +10,6 @@
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery.boutique_min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript" src="fusioncharts/themes/fusioncharts.theme.zune.js"></script>
-<script type="text/javascript" src="fusioncharts/fusioncharts.js"></script>
 
 <script type="text/javascript">	
 	var company_id=-1;		

@@ -7,55 +7,84 @@
 	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/css.css">
 	
-<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <script type="text/javascript">	
 	var company_id=-1;		
 	var urlimg="";
 	var axisnum=0;
-	function search_name(){
-	/*	var url="http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c";
-		xmlHttp.open("POST",url, true)	;
-		xmlHttp.onreadystatechange = getStatusBack;
-		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
-		xmlHttp.send(xml);*/	
+	var imgnum=0;
+	$(function() {
+		i=0;
+		$("#draggable1").draggable();
+		$("#draggable2").draggable();
+		$("#draggable3").draggable();
+		$("#draggable4").draggable();
+		$("#draggable5").draggable();
+		$("#draggable6").draggable();
+		$("#draggable7").draggable();
+		$("#draggable8").draggable();
+		$("#draggable9").draggable();
+		$("#draggable10").draggable();
+	});
+
+	function search_name(){	
 		//<p>Choose industry/focus:</p>		
 	     	$.post("ajax/get_img", 
-			{				
-				url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c"
+			{								
+				url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c"			
             },
 			function(data,status){
-				data = eval("(" + data + ")");
-				console.log(data);
-				data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path
-				var innerHTML="<a class=\"pull-left\" href=\"#\"> <img src=\""+data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path+"\" class=\"media-object\" onclick=\"get_metrics(this)\" width=100px> </a>";			
-				//innerHTML+="<h4 class=\"media-heading\">"+document.getElementById("company_name").value+"</h4>";
-				document.getElementById("focus").innerHTML += innerHTML;		   
-			});
-            /*function(data,status){
-				console.log(data);
-				data = eval("(" + data + ")");
-			     company_id=data.company_id;
-				 var innerHTML="<p>Choose industry/focus:</p>";
-					console.log(data);
-				 for(var i = 0; i < data.focus_list.length; i++)
-	            {
-	            	innerHTML += "<input class=\"btn btn-default\" onclick=\"get_metrics(this)\" id=\"industry\" type=\"button\" value=\""+data.focus_list[i]+"\" />";
-				}			 
-				document.getElementById("focus").innerHTML = innerHTML;
-			});*/
-	};
-		
+				//data = eval("(" + data + ")");
+				//<script type="text/javascript" src="js/jquery-1.9.1.js">
 				
-		
-	function get_metrics(ok){
+	//<link rel="stylesheet" href="http://resources/demos/style.css">
+				console.log(data);
+				imgnum=imgnum+1;
+				//alert(imgnum);
+				//data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path;data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path
+				var innerHTML="<a class=\"pull-left\" href=\"#\"> <img src=\""+data+"\" draggable=\"true\" ondragstart=\"drag(event)\" > </a>";			
+				//innerHTML+="<h4 class=\"media-heading\">"+document.getElementById("company_name").value+"</h4>";
+				//alert(innerHTML);
+				document.getElementById("draggable"+imgnum).innerHTML += innerHTML;		   
+			});            
+	};
+	function upload(){		
+		var file_data = $("#userfile").prop("files")[0];   
+		var form_data = new FormData();                  
+		form_data.append("file", file_data);                         
+		$.ajax({
+                url: "ajax/upload",
+                dataType: 'script',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+				async:false,
+				enctype: 'multipart/form-data',
+                complete: function(data){
+					imgnum=imgnum+1;
+					console.log(data['responseText']);
+					var innerHTML="<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" > </a>";			
+					//alert(innerHTML);
+					document.getElementById("draggable"+imgnum).innerHTML += innerHTML;	
+                   // alert(php_script_response);
+                }
+		});				            			     	
+	};			
+	
+	function get_metrics(){
 			//document.getElementById("focus").className="btn btn-default";
 			//ok.className ="btn btn-success";			
 			$.post("ajax/get_metrics", 
 			{
-				industry:ok.value
+				
             },			
             function(data,status){
 				console.log(data);
@@ -225,18 +254,52 @@
 			<span class="input-group-btn">
 				<button class="btn btn-default" onclick="search_name()" name="submit" type="button">Search</button>
 			</span>
-		</div><!-- /input-group <input type="text" class="input"  /> <input type="submit" class="btn"  value="search"/>chart_div	-->
+		</div>
+		<!-- /input-group <input type="text" class="input"  /> <input type="submit" class="btn"  value="search"/>chart_div	-->		
 		</div>	
+		<div class="col-lg-6">
+		<div class="input-group">
+		
+			<input type="file" class="form-control" id="userfile" name='userfile' />
+			<span class="input-group-btn">
+				<button class="btn btn-default" onclick="upload()" name="submit" type="button">Upload</button>
+			</span>
+		</div>		
+		</div>
+		<button class="btn btn-default" onclick="get_metrics()" name="submit" type="button">Show axis</button>
 	</div>
-	<div id="focus" class="media">
 	
+	<div id="focus">
+	<div id="draggable1" >	
 	</div>
-	<div id="metrics1" class="btn-group">
+	<div id="draggable2" >	
 	</div>
-	<div id="metrics2" class="btn-group">
+	<div id="draggable3" >	
+	</div>
+	<div id="draggable4" >	
+	</div>
+	<div id="draggable5" >	
+	</div>
+	<div id="draggable6" >	
+	</div>
+	<div id="draggable7" >	
+	</div>
+	<div id="draggable8" >	
+	</div>
+	<div id="draggable9" >	
+	</div>
+	<div id="draggable10" >	
+	</div>
+	</div>
+	</br></br>
+	<div id="metrics" >	
+		<div id="metrics1" class="btn-group">
+		</div>
+		<div id="metrics2" class="btn-group">
+		</div>
 	</div>
 	<div id="custom_html_content_div"></div>
-	 <div id="chartContainer" style="width: 900px; height: 500px;"></div>	
+		<div id="chartContainer" style="width: 900px; height: 500px;"></div>	
 	</div>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>	
 	

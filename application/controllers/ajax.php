@@ -6,14 +6,64 @@ class Ajax extends CI_Controller {
     {
         exit('Access denied');
     }
+	
+	function upload(){	
+		//$data=file_get_contents($_POST['url']);$_FILES['f_file']['name']
+		if ( 0 < $_FILES['file']['error'] ) {
+			echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+		}
+		else {
+			$dest='uploads/'.$_FILES['file']['name'];
+			move_uploaded_file($_FILES['file']['tmp_name'],$dest);							
+		}
+								
+		$name=$_FILES['file']['name'];
+		$source='http://localhost/marketmapping/timthumb?src=http://localhost/marketmapping/'.$dest;
+		$source=$source."&h=100&w=150&zc=2";
+		$newdest='./image/'.$name;
+							
+		copy($source, $newdest); 
+		echo $newdest;
+	}
 	function get_img(){	
 			$data=file_get_contents($_POST['url']);
-			/*//$data = eval("(" + data + ")");
 			$array=json_decode($data,true);
+			$name=$array['data']['properties']['name'];
+			$originalimg=$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
 			
-			//$picture = imagecreatefrompng($array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path']);
-			$picture = imagecreatefrompng('F:\wamp\www\marketmapping\like_button2.png');
-			echo $array['data']['relationships']['primary_image']['items'][0]['path'];
+			
+			$source='http://localhost/marketmapping/timthumb?src='.$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
+			$source=$source."&h=100&w=130&zc=2";
+			
+			/*$metasource=getimagesize($originalimg);
+			if ($metasource[0]/$metasource[1]>1.5){
+				$source=$source."zc=";
+			}else if ($metasource[0]/$metasource[1]<1.5){
+				$source=$source."zc=c";
+			}*/
+			
+			$metasource=getimagesize($source);
+			switch ($metasource[2]){
+				case 2:
+					$dest='./image/'.$name.'.jpg';
+					break;
+				case 3:
+					$dest='./image/'.$name.'.png';
+					break;
+			}
+						
+			//echo $dest;
+			copy($source, $dest);       
+			/*$meta=getimagesize($dest);
+			switch ($meta[2]){
+				case 2:
+					$picture = imagecreatefromjpeg($dest);
+					break;
+				case 3:
+					$picture = imagecreatefrompng($dest);
+					break;
+			}
+			
 			$img_w = imagesx($picture);
 			$img_h = imagesy($picture);
 
@@ -33,10 +83,10 @@ class Ajax extends CI_Controller {
 				}
 			}
 
-			imagepng($newPicture,'F:\wamp\www\marketmapping\image.png');
+			imagepng($newPicture,$dest);
 			imagedestroy($newPicture);
 			imagedestroy($picture);*/
-			echo $data;
+			echo $dest;
 		
 	}
     function get_focus()

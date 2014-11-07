@@ -6,52 +6,53 @@
 	<title >MarketMapping</title>
 	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/css.css">
-	
-
-	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+		
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
 
 <script type="text/javascript">	
 	var company_id=-1;		
 	var urlimg="";
 	var axisnum=0;
-	var imgnum=0;
-	$(function() {
-		i=0;
-		$("#draggable1").draggable();
-		$("#draggable2").draggable();
-		$("#draggable3").draggable();
-		$("#draggable4").draggable();
-		$("#draggable5").draggable();
-		$("#draggable6").draggable();
-		$("#draggable7").draggable();
-		$("#draggable8").draggable();
-		$("#draggable9").draggable();
-		$("#draggable10").draggable();
+	$(document).ready(function() {
+		var $logos=$("#logos"),
+			$transfer=$("#transfer");
+			
+		$transfer.droppable({
+			accept: "#logos > a",
+			//activeClass: "custom-state-active",
+			activeClass: "ui-state-highlight",
+			drop: function( event, ui ) {
+				alert(ui.position.top);
+				//recycleImage( ui.draggable );
+			}
+		});
+		//$("a",$logos).draggable();
+		/*$("#draggable1").draggable({			
+			stop: function( event, ui ) {
+				//alert("wll");
+				//alert(ui.position.top);//ui.y;
+				//console.log(ui.x);
+			}
+		});*/
 	});
 
 	function search_name(){	
-		//<p>Choose industry/focus:</p>		
 	     	$.post("ajax/get_img", 
 			{								
-				url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c"			
+				crunchbase_url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c",
+				anglelist_url:"http://api.angel.co/1/search/slugs?query="+document.getElementById("company_name").value
             },
 			function(data,status){
-				//data = eval("(" + data + ")");
-				//<script type="text/javascript" src="js/jquery-1.9.1.js">
-				
-	//<link rel="stylesheet" href="http://resources/demos/style.css">
-				console.log(data);
-				imgnum=imgnum+1;
-				//alert(imgnum);
-				//data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path;data.metadata.image_path_prefix+data.data.relationships.primary_image.items[0].path
-				var innerHTML="<a class=\"pull-left\" href=\"#\"> <img src=\""+data+"\" draggable=\"true\" ondragstart=\"drag(event)\" > </a>";			
-				//innerHTML+="<h4 class=\"media-heading\">"+document.getElementById("company_name").value+"</h4>";
-				//alert(innerHTML);
-				document.getElementById("draggable"+imgnum).innerHTML += innerHTML;		   
+				data = eval("(" + data + ")");
+				//console.log(data);
+				for (i=0;i<data.length;i++){					
+					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();
+				}													
 			});            
 	};
 	function upload(){		
@@ -68,13 +69,9 @@
                 type: 'post',
 				async:false,
 				enctype: 'multipart/form-data',
-                complete: function(data){
-					imgnum=imgnum+1;
-					console.log(data['responseText']);
-					var innerHTML="<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" > </a>";			
-					//alert(innerHTML);
-					document.getElementById("draggable"+imgnum).innerHTML += innerHTML;	
-                   // alert(php_script_response);
+                complete: function(data){				
+					console.log(data['responseText']);							
+					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   
                 }
 		});				            			     	
 	};			
@@ -269,27 +266,9 @@
 		<button class="btn btn-default" onclick="get_metrics()" name="submit" type="button">Show axis</button>
 	</div>
 	
-	<div id="focus">
-	<div id="draggable1" >	
-	</div>
-	<div id="draggable2" >	
-	</div>
-	<div id="draggable3" >	
-	</div>
-	<div id="draggable4" >	
-	</div>
-	<div id="draggable5" >	
-	</div>
-	<div id="draggable6" >	
-	</div>
-	<div id="draggable7" >	
-	</div>
-	<div id="draggable8" >	
-	</div>
-	<div id="draggable9" >	
-	</div>
-	<div id="draggable10" >	
-	</div>
+	<div class="logos-class">
+		<div id="logos">		
+		</div>
 	</div>
 	</br></br>
 	<div id="metrics" >	
@@ -298,9 +277,15 @@
 		<div id="metrics2" class="btn-group">
 		</div>
 	</div>
+	<div id="squares" >       
+		<div id="transfer">
+		</div>
+	</div>
+				
 	<div id="custom_html_content_div"></div>
 		<div id="chartContainer" style="width: 900px; height: 500px;"></div>	
 	</div>
+	
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>	
 	
 </div>

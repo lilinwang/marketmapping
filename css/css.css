@@ -1,6 +1,7 @@
 .col-lg-6{
 width:30%;
 }
+	
 body {
 		margin: 40px;
 	}
@@ -16,6 +17,7 @@ body {
 		border-bottom: 1px solid #D0D0D0;			
 	}
 
+	
 	#body{
 		margin: 0 15px 0 15px;
 	}
@@ -28,12 +30,16 @@ body {
 		padding: 0 10px 0 10px;
 		margin: 20px 0 0 0;
 	}
+	#squares{
+		background:#0000;
+		width:900px;
+		height:900px;		
+		border:2px solid;	
+		margin-left:50px;
+	}
 	#focus, #chart,#search,#metrics{
 		margin: 15px 15px 0 15px;
 		height: 70px;
-	}
-	#container{
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
+	}	
+	
+	

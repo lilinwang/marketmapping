@@ -11,26 +11,42 @@
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
+	<script type="text/javascript" src="js/html2canvas.js" type="text/javascript"></script>
 	
-
+\
 <script type="text/javascript">	
 	var company_id=-1;		
 	var urlimg="";
 	var axisnum=0;
 	$(document).ready(function() {
 		var $logos=$("#logos"),
-			$transfer=$("#transfer");
+			$transfer=$("#squares");
 			
 		$transfer.droppable({
 			accept: "#logos > a",
 			//activeClass: "custom-state-active",
 			activeClass: "ui-state-highlight",
 			drop: function( event, ui ) {
+			
 				alert(ui.position.top);
 				//recycleImage( ui.draggable );
 			}
 		});
+		$('body').on('click','#save_image',function(){
+      	        html2canvas($('.myImage'), {
+      	            onrendered: function(canvas) {
+      		            //$('.imageHolder').html(canvas);
+      		                var dataURL = canvas.toDataURL("image/png");
+      		
+      		                $('.imageHolder').append('<img src="'+dataURL+'" />');
+      		               /* $('.imageHolder').html('Generating..');
+      		                $.post('image.php',{image: dataURL},function(data){
+      		                	$('.imageHolder').html(data);
+      		                });*/
+      		        }
+      	        });
+      	});
 		//$("a",$logos).draggable();
 		/*$("#draggable1").draggable({			
 			stop: function( event, ui ) {
@@ -277,11 +293,24 @@
 		<div id="metrics2" class="btn-group">
 		</div>
 	</div>
-	<div id="squares" >       
-		<div id="transfer">
+
+	
+	<div class="myImage">
+		          			         		      	  				  
+	<div id="squares">   
+		<div id="upper" style="border-bottom:1px solid;height:450px;width:898px;">   
+			<div id="square1" style="border-right: 1px solid;height:450px;width:450px;"></div>	
+		</div>		
+		<div id="lower" style="height:450px;width:900px;">   
+			<div id="square4" style="border-right: 1px solid;height:448px;width:450px;"></div>
 		</div>
-	</div>
-				
+	</div>	
+	 </div>
+     <a id="save_image" href="#">3 Generate Image</a>
+		<div class="result">
+			          <h1>4 Preview:</h1>
+		<div class="imageHolder"></div>
+	</div>					
 	<div id="custom_html_content_div"></div>
 		<div id="chartContainer" style="width: 900px; height: 500px;"></div>	
 	</div>

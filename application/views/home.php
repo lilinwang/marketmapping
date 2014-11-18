@@ -28,7 +28,7 @@
 			//activeClass: "custom-state-active",
 			activeClass: "ui-state-highlight",
 			drop: function( event, ui ) {
-			
+				$('.myImage').append(ui);
 				alert(ui.position.top);
 				//recycleImage( ui.draggable );
 			}

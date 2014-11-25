@@ -19,16 +19,24 @@
 	var company_id=-1;		
 	var urlimg="";
 	var axisnum=0;
+	
 	$(document).ready(function() {
 		var $logos=$("#logos"),
 			$transfer=$("#squares");
-			
+		
 		$transfer.droppable({
 			accept: "#logos > a",
 			//activeClass: "custom-state-active",
 			activeClass: "ui-state-highlight",
 			drop: function( event, ui ) {
-				$('.myImage').append(ui);
+				
+				var dropElem = ui.draggable;				
+				dropElem.css('position', 'absolute');
+				dropElem.css('top', ui.position.top+$(this).offset().top-125);
+				dropElem.css('left', ui.position.left+$(this).offset().left-50);
+
+				$(this).append(dropElem);
+				//$(this).append(ui.draggable.css({position: 'static'});
 				alert(ui.position.top);
 				//recycleImage( ui.draggable );
 			}
@@ -38,8 +46,9 @@
       	            onrendered: function(canvas) {
       		            //$('.imageHolder').html(canvas);
       		                var dataURL = canvas.toDataURL("image/png");
+							window.open(dataURL);
       		
-      		                $('.imageHolder').append('<img src="'+dataURL+'" />');
+      		                //$('.imageHolder').append('<img src="'+dataURL+'" />');
       		               /* $('.imageHolder').html('Generating..');
       		                $.post('image.php',{image: dataURL},function(data){
       		                	$('.imageHolder').html(data);
@@ -269,6 +278,7 @@
 			</span>
 		</div>
 		<!-- /input-group <input type="text" class="input"  /> <input type="submit" class="btn"  value="search"/>chart_div	-->		
+		
 		</div>	
 		<div class="col-lg-6">
 		<div class="input-group">
@@ -279,7 +289,8 @@
 			</span>
 		</div>		
 		</div>
-		<button class="btn btn-default" onclick="get_metrics()" name="submit" type="button">Show axis</button>
+		<!--<button class="btn btn-default" onclick="get_metrics()" name="submit" type="button">Show axis</button>-->		
+		<button class="btn btn-default" id="save_image" name="submit" type="button">Export Image</button>
 	</div>
 	
 	<div class="logos-class">
@@ -305,12 +316,9 @@
 			<div id="square4" style="border-right: 1px solid;height:448px;width:450px;"></div>
 		</div>
 	</div>	
-	 </div>
-     <a id="save_image" href="#">3 Generate Image</a>
-		<div class="result">
-			          <h1>4 Preview:</h1>
-		<div class="imageHolder"></div>
-	</div>					
+	</div>
+     
+				
 	<div id="custom_html_content_div"></div>
 		<div id="chartContainer" style="width: 900px; height: 500px;"></div>	
 	</div>

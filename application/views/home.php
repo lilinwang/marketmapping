@@ -24,7 +24,7 @@
 	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
 	<script type="text/javascript" src="js/html2canvas.js" type="text/javascript"></script>
-	
+	<script type="text/javascript" src="js/script.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -254,17 +254,21 @@
 							<div id="square4" style="border-right: 1px solid;height:448px;width:450px;"></div>
 						</div>
 					</div>	
-					<div class="label-top">
-						<p contenteditable="true" style="text-align:center">High price</p>     			         		      	  				  
+					<div class="label-top">						   			         		      	  				  
+						<input type="text" id="axis_top" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<ul id="axis_top_list"></ul>
 					</div>
 					<div class="label-bottom">
-						<p contenteditable="true" style="text-align:center">Low price</p>     			         		      	  				  
+						<input type="text" id="axis_bottom" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<ul id="axis_bottom_list"></ul> 			         		      	  				  
 					</div>
-					<div class="label-left">
-						<p contenteditable="true" style="text-align:center">Difficult to use</p>     			         		      	  				  
+					<div class="label-left">     			        
+						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<ul id="axis_left_list"></ul>
 					</div>
-					<div class="label-right">
-						<p contenteditable="true" style="text-align:center">Easy to use</p>     			         		      	  				  
+					<div class="label-right">   	
+						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<ul id="axis_right_list"></ul>
 					</div>
 				</div>               
             </div>

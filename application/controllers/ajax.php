@@ -6,7 +6,20 @@ class Ajax extends CI_Controller {
     {
         exit('Access denied');
     }
-	
+	function auto_complete(){
+		$keyword = '%'.$_POST['keyword'].'%';
+		$this->load->model('axis_model');				
+		
+		$list = $this->axis_model->get_matched_axis($keyword);
+		if (count($list)>0){					
+		foreach ($list as $rs) {
+			// put in bold the written text
+			$country_name = str_replace($_POST['keyword'], '<b>'.$_POST['keyword'].'</b>', $rs['axis_name']);
+			// add new option
+			echo '<li onclick="set_item(\''.str_replace("'", "\'", $rs['axis_name']).'\',\''.$_POST['input'].'\')">'.$country_name.'</li>';
+		}
+		}
+	}
 	function upload(){	
 		//$data=file_get_contents($_POST['url']);$_FILES['f_file']['name']
 		if ( 0 < $_FILES['file']['error'] ) {

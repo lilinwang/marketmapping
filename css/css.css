@@ -9,27 +9,37 @@
 	}
 	.label-top{
 		position:absolute;
-		left:797px;
+		left:800px;
 		top:85px;
-		width:100px;		
+		width:150px;		
 	}
 	.label-bottom{
 		position:absolute;
-		left:797px;
+		left:800px;
 		top:955px;
-		width:100px;		
+		width:150px;		
 	}
 	.label-left{
 		position:absolute;
 		left:350px;
 		top:535px;
-		width:100px;		
+		width:150px;		
 	}
 	.label-right{
 		position:absolute;
 		left:1133px;
 		top:535px;
-		width:100px;		
+		width:150px;		
 	}
+.label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
+	width: 150px;	
+	position: absolute;
+	z-index: 9;
+	background: #f3f3f3;
+	list-style: none;
+}
+.label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li :hover {
+	background: #eaeaea;
+}
 	
 	

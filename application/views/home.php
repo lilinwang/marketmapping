@@ -78,8 +78,12 @@
       	            onrendered: function(canvas) {
       		            //$('.imageHolder').html(canvas);
       		                var dataURL = canvas.toDataURL("image/png");
-							window.open(dataURL);
-      		
+							//window.open(dataURL);
+							var link = document.createElement('a');
+							link.href = dataURL;
+							link.download = 'Marketmap.jpg';
+							document.body.appendChild(link);
+							link.click();
       		                //$('.imageHolder').append('<img src="'+dataURL+'" />');
       		               /* $('.imageHolder').html('Generating..');
       		                $.post('image.php',{image: dataURL},function(data){
@@ -87,6 +91,7 @@
       		                });*/
       		        }
       	        });
+				
       	});
 		$('body').on('click','#view_logo',function(){
 			if (logo_show){

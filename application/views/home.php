@@ -74,7 +74,7 @@
 			}
 		});
 		$('body').on('click','#save_image',function(){
-      	        html2canvas($('.myImage'), {
+      	    html2canvas($('.myImage'), {
       	            onrendered: function(canvas) {
       		            //$('.imageHolder').html(canvas);
       		                var dataURL = canvas.toDataURL("image/png");
@@ -83,14 +83,17 @@
 							link.href = dataURL;
 							link.download = 'Marketmap.jpg';
 							document.body.appendChild(link);
-							link.click();
-      		                //$('.imageHolder').append('<img src="'+dataURL+'" />');
-      		               /* $('.imageHolder').html('Generating..');
-      		                $.post('image.php',{image: dataURL},function(data){
-      		                	$('.imageHolder').html(data);
-      		                });*/
+							link.click();      		                
       		        }
-      	        });
+      	    });
+			$.post("ajax/save_axis", 
+			{								
+				axis_top:$('#axis_top').val(),
+				axis_bottom:$('#axis_bottom').val(),
+				axis_left:$('#axis_left').val(),
+				axis_right:$('#axis_right').val()
+            },function(data,status){															
+			});   
 				
       	});
 		$('body').on('click','#view_logo',function(){

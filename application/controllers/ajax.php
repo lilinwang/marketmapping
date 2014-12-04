@@ -20,6 +20,17 @@ class Ajax extends CI_Controller {
 		}
 		}
 	}
+	function save_axis(){
+		$data=array($_POST['axis_top'],$_POST['axis_bottom'],$_POST['axis_left'],$_POST['axis_right']);
+		$this->load->model('axis_model');				
+		
+		$result = $this->axis_model->save($data);
+		if ($result==1){							
+			echo 'success';
+		}else{
+			echo 'fail';
+		}
+	}
 	function upload(){	
 		//$data=file_get_contents($_POST['url']);$_FILES['f_file']['name']
 		if ( 0 < $_FILES['file']['error'] ) {

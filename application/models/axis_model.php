@@ -15,6 +15,24 @@ class axis_model extends CI_Model{
 			return;
 		}				
 	} 	
-    
+    function save($data){    
+		foreach ($data as $value) {
+			$query = $this->db->query(
+				'SELECT * FROM `axis` WHERE `axis_name`=?',
+				array($value)
+			);
+			if ($query->num_rows()>0){
+				$query = $this->db->query(
+					'UPDATE `axis` SET `axis_count`=`axis_count`+1 WHERE `axis_name`=?',
+					array($value)
+				);
+			} else{
+				$query = $this->db->query(
+					'INSERT INTO `axis`(`axis_name`) VALUES (?)',
+					array($value)
+				);
+			}
+		}	    
+	} 	
 }
 ?>

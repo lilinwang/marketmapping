@@ -60,7 +60,10 @@
                         <a href="#about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="home">Demo</a>
+                        <a href="#links">Links</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="blog">Why Market Maps?</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +81,12 @@
                     <div class="intro-text">
                         <span class="name">Market Maps on the Fly</span>
                         <hr class="star-light">
-                        <span class="skills">Skip PowerPoint and Create Your Own Market Maps in Seconds</span>
+                        <div class="col-lg-8 col-lg-offset-2 text-center">
+                            <a href="home" class="btn btn-lg btn-demo">
+                            <i class="fa fa-line-chart"></i> Go to Demo
+                            </a>
+                         </div>
+                        <span class="skills">Insert more information about the tool here</span>
                     </div>
                 </div>
             </div>

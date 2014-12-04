@@ -45,7 +45,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
+
 <script type="text/javascript">	
 	var company_id=-1;		
 	var urlimg="";
@@ -81,7 +81,7 @@
 							//window.open(dataURL);
 							var link = document.createElement('a');
 							link.href = dataURL;
-							link.download = 'Marketmap.jpg';
+							link.download = 'Marketmap.png';
 							document.body.appendChild(link);
 							link.click();      		                
       		        }
@@ -116,6 +116,9 @@
 	});
 
 	function search_name(){	
+			//$('#logos').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
+			//$('#search-icon').toggleClass('fa-search fa-spinner');
+			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
 	     	$.post("ajax/get_img", 
 			{								
 				crunchbase_url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c",
@@ -126,10 +129,16 @@
 				//console.log(data);
 				for (i=0;i<data.length;i++){					
 					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();
+					setTimeout(function () {
+                $('#search-icon').html('<i class="fa fa-search"></i>');
+            }, 200);
 				}													
 			});            
+			//$('#search-icon').toggleClass('fa-spinner fa-search');
 	};
 	function upload(){		
+		$('#upload-icon').html('<i class="fa fa-spin fa-spinner"></i>');
+		//alert('wll');alert($('#upload-icon').class());
 		var file_data = $("#userfile").prop("files")[0];   
 		var form_data = new FormData();                  
 		form_data.append("file", file_data);                         
@@ -146,8 +155,14 @@
                 complete: function(data){				
 					console.log(data['responseText']);							
 					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   
+					//$('#upload-icon').attr('class','fa fa-upload');
+					setTimeout(function () {
+                $('#upload-icon').html('<i class="fa fa-upload"></i>');
+            }, 200);
+					//$('#upload-icon').html('<i class="fa fa-upload"></i>');
                 }
 		});				            			     	
+		
 	};			
 	
 </script>		
@@ -211,8 +226,8 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search..." id="company_name">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" onclick="search_name()" name="submit" type="button">
-                                        <i class="fa fa-search"></i>
+                                    <button class="btn btn-default" onclick="search_name()" name="submit" type="button" id="search-icon">
+                                        <i class="fa fa-search" ></i>
                                     </button>
                                 </span>
                             </div>
@@ -226,7 +241,7 @@
 								</span>
                                 <span class="input-group-btn">
 									
-                                    <button class="btn btn-default" onclick="upload()" name="submit" type="button" >
+                                    <button class="btn btn-default" onclick="upload()" name="submit" type="button" id="upload-icon">
                                         <i class="fa fa-upload"></i>
                                     </button>
                                 </span>

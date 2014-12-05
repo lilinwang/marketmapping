@@ -131,9 +131,9 @@ color: #6C6AB8;
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>All About Market Maps</h1>
-                        <h2 class="subheading">A Comprehensive guide to positional maps in the new age</h2>
-                        <span class="meta">Posted by <a href="about">CornellTech Students</a> on December 6th, 2014</span>
+                        <h1 style="color:#C34848; margin-top:60px">All About Market Maps</h1>
+                        <h2 class="subheading" style="color:#C34848">A Comprehensive guide to positional maps in the new age</h2>
+                        <span class="meta" style="color:#C34848">Posted by <a style="color:#C34848" href="about">CornellTech Students</a> on December 6th, 2014</span>
                     </div>
                 </div>
             </div>

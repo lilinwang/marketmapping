@@ -20,6 +20,8 @@
 	<!-- Custom Fonts -->
     <link href="font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/css.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -244,51 +246,41 @@
 
     <div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" id="view_logo">
-					<i class="fa fa-align-justify"></i>
-					Logos
-				</a>				
+                <a class="navbar-brand" href="welcome">MarketMap</a>
             </div>
-            <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown<button class="btn btn-default" id="save_image" name="submit" type="button">Export Image</button>
-                     -->				
-                <!--<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        Save <i class="fa fa-cloud-download"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li id="canvas-style" style="margin-left:10px">							                             
-                            <p>
-                                <strong>Style:</strong>
-                            </p>							
-							<button class="btn" id="canvas-white"><img  src="img/style138.png" /></button>
-							<button class="btn" id="canvas-gray"><img  src="img/style139.png" /></button>
-							<button class="btn" id="canvas-ivory"><img  src="img/style140.png" /> </button>
-													
-                        </li>
-                        <li class="divider"></li>
-						<li>
-                            <a href="#" id="save_image" >
-								Save as PNG  
-                            </a>
-                        </li>                        
-                                                
-                    </ul>
-                </li>
-                -->
-            </ul>
-            <!-- /.navbar-top-links -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="links">Links</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="blog">Why Market Maps?</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
             <div class="navbar-default sidebar" role="navigation" id="sidebar">
                 <div class="sidebar-nav navbar-collapse">
@@ -385,9 +377,9 @@
 				<button class="btn btn-default" onclick="clear_all()">
                     Clear canvas
                 </button>
-				<div id="myImage">
+				<div id="myImage" style="margin-top:40px">
 					<div class="map-title">
-						<input type="text" id="canvas_title" placeholder="xx vs. competitors"  class="canvas-title">											
+						<input type="text" id="canvas_title" placeholder="Tittle of Map"  class="canvas-title">											
 					</div>
 					
 					<div id="squares">   
@@ -399,19 +391,19 @@
 						</div>
 					</div>	
 					<div class="label-top">						   			         		      	  				  
-						<input type="text" id="axis_top" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
+						<input type="text" id="axis_top" onkeyup="autocomplet(this)" placeholder="Y Axis" class="axis-label">
 						<ul id="axis_top_list"></ul>
 					</div>
 					<div class="label-bottom">
-						<input type="text" id="axis_bottom" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
+						<input type="text" id="axis_bottom" onkeyup="autocomplet(this)" placeholder="Y Axis" class="axis-label">
 						<ul id="axis_bottom_list"></ul> 			         		      	  				  
 					</div>
 					<div class="label-left">     			        
-						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
+						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="X Axis" class="axis-label">
 						<ul id="axis_left_list"></ul>
 					</div>
 					<div class="label-right">   	
-						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." style="text-align:center;"class="axis-label">
+						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:center;"class="axis-label">
 						<ul id="axis_right_list"></ul>
 					</div>
 				</div>               

@@ -53,6 +53,11 @@ class Ajax extends CI_Controller {
 			//get the image from Crunchbase
 			$data=file_get_contents($_POST['crunchbase_url']);
 			$array=json_decode($data,true);
+			if (isset($array['data']['error'])){
+				$response[0]=0;
+				echo json_encode($response);
+				return;
+			}
 			$name=$array['data']['properties']['name']."_crunchbase";
 			$originalimg=$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
 						
@@ -80,6 +85,12 @@ class Ajax extends CI_Controller {
 			//2) get the image address from AngleList
 			$data=file_get_contents("http://api.angel.co/1/startups/".$id);
 			$array=json_decode($data,true);
+			if (isset($array['data']['error'])){
+				$response[1]=0;
+				echo json_encode($response);
+				return;
+			}
+			
 			$originalimg=substr($array['logo_url'],5);
 			
 			//echo $originalimg;			

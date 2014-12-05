@@ -65,16 +65,22 @@
 				var dropElem = ui.helper;//ui.draggable;				
 				dropElem.css('position', 'absolute');
 				var pos=ui.helper.position();
-				//alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
-				dropElem.css('top', event.pageY-event.offsetY);
-				dropElem.css('left', event.pageX-event.offsetX);
+				alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
+				if ((event.pageX-event.offsetX)<pos.left){
+					dropElem.css('top', pos.top+event.pageY-50);
+					dropElem.css('left', pos.left);
+				}else{
+					dropElem.css('top', event.pageY-event.offsetY);
+					dropElem.css('left', event.pageX-event.offsetX);
+				}
 				dropElem.css('z-index', 100);
 				dropElem.addClass('canvas-image');
+				dropElem.draggable();
 				$(this).append(dropElem);
 				ui.draggable.remove();
 			}
 		});
-		//107,346
+		
 		$trashcan.droppable({
 			//accept: "#logos > a",
 			//activeClass: "custom-state-active",
@@ -142,6 +148,10 @@
 	function search_name(){	
 			//$('#logos').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
 			//$('#search-icon').toggleClass('fa-search fa-spinner');
+			if (document.getElementById("company_name").value==''){
+				alert("Please input company name!");
+				return;
+			}
 			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
 	     	$.post("ajax/get_img", 
 			{								
@@ -151,7 +161,11 @@
 			function(data,status){
 				data = eval("(" + data + ")");
 				//console.log(data);
-				for (i=0;i<data.length;i++){					
+				for (i=0;i<data.length;i++){
+					if (data[i]==0){
+						alert("Company not found! Try another one!");
+						break;						
+					};
 					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable({
 						//revert: 'invalid',
 						helper: function(){
@@ -350,7 +364,7 @@
 							</ul>
 							</li>
 							<li class="dropup same-line" >
-							<button id="trash-can" class="btn btn-default" style="height:77px">
+							<button id="trash-can" class="btn btn-default" style="height:77px;width:80px;">
 								<i class="fa fa-trash-o fa-4x"></i>  
 							</button>
 																				

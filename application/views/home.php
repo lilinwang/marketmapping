@@ -382,7 +382,7 @@
                 </button>
 				<div id="myImage">
 					<div class="map-title">
-						<input type="text" id="canvas_title" placeholder="xx vs. competitors" style="width:100%;text-align:center;border: 0px solid;background-color: transparent;">											
+						<input type="text" id="canvas_title" placeholder="xx vs. competitors"  class="canvas-title">											
 					</div>
 					
 					<div id="squares">   
@@ -394,19 +394,19 @@
 						</div>
 					</div>	
 					<div class="label-top">						   			         		      	  				  
-						<input type="text" id="axis_top" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<input type="text" id="axis_top" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
 						<ul id="axis_top_list"></ul>
 					</div>
 					<div class="label-bottom">
-						<input type="text" id="axis_bottom" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<input type="text" id="axis_bottom" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
 						<ul id="axis_bottom_list"></ul> 			         		      	  				  
 					</div>
 					<div class="label-left">     			        
-						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
 						<ul id="axis_left_list"></ul>
 					</div>
 					<div class="label-right">   	
-						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." style="border: 0px solid;background-color: transparent;">
+						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
 						<ul id="axis_right_list"></ul>
 					</div>
 				</div>               

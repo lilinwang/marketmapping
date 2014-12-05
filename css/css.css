@@ -33,25 +33,25 @@
 	.label-top{
 		position:absolute;
 		left:800px;
-		top:115px;
+		top:125px;
 		width:150px;		
 	}
 	.label-bottom{
 		position:absolute;
 		left:800px;
-		top:985px;
+		top:995px;
 		width:150px;		
 	}
 	.label-left{
 		position:absolute;
 		left:350px;
-		top:565px;
+		top:575px;
 		width:150px;		
 	}
 	.label-right{
 		position:absolute;
 		left:1133px;
-		top:565px;
+		top:575px;
 		width:150px;		
 	}
 .label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
@@ -64,3 +64,9 @@
 .label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li :hover {
 	background: #eaeaea;
 }	
+.axis-label{
+	border: 0px solid;background-color: transparent;height:28px;width:150px;font-size:20px;
+}
+.canvas-title{
+	width:100%;text-align:center;border: 0px solid;background-color: transparent;height:36px;font-size:24px;
+}

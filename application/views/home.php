@@ -64,18 +64,17 @@
 				$.ui.ddmanager.current.cancelHelperRemoval = true;
 				var dropElem = ui.helper;//ui.draggable;				
 				dropElem.css('position', 'absolute');
-				dropElem.css('top', ui.position.top+$(this).offset().top+111);
-				dropElem.css('left', ui.position.left+$(this).offset().left-370);
+				var pos=ui.helper.position();
+				//alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
+				dropElem.css('top', event.pageY-event.offsetY);
+				dropElem.css('left', event.pageX-event.offsetX);
 				dropElem.css('z-index', 100);
 				dropElem.addClass('canvas-image');
 				$(this).append(dropElem);
-				//$(this).append(ui.draggable.css({position: 'static'});
 				ui.draggable.remove();
-				alert(ui.position.top);
-				//recycleImage( ui.draggable );
 			}
 		});
-		
+		//107,346
 		$trashcan.droppable({
 			//accept: "#logos > a",
 			//activeClass: "custom-state-active",
@@ -352,7 +351,7 @@
 							</li>
 							<li class="dropup same-line" >
 							<button id="trash-can" class="btn btn-default" style="height:77px">
-								<i class="fa fa-trash-o fa-5x"></i>  
+								<i class="fa fa-trash-o fa-4x"></i>  
 							</button>
 																				
 							</li>							

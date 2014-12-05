@@ -102,7 +102,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Samples</a>
+                        <a href="home">Demo</a>
                     </li>
                     <li class="page-scroll">
                         <a href="about">About</a>
@@ -186,17 +186,7 @@ map was a very unique and generally non-repeatable endeavor.</p>
 
                     <h2 class="section-heading">Our Lessons Learned</h2>
 
-                    <p>Our engagement with individuals who need to create market maps has led us to the hypothesis 
-
-that visualization of a new company’s position against its competitors through different lenses 
-
-can be the best way to communicate to investors or consumers where a company lies within its 
-
-competitive landscape, and convey how the company creates value and differentiates itself.  In 
-
-particular, our team has identified the three most relevant and revealing8 templates for mapping 
-
-market landscapes:  XY market maps, petal diagrams, and flow charts.</p>
+                    <p>Our engagement with individuals who need to create market maps has led us to the hypothesis that visualization of a new company’s position against its competitors through different lenses can be the best way to communicate to investors or consumers where a company lies within its competitive landscape, and convey how the company creates value and differentiates itself.  In particular, our team has identified the three most relevant and revealing templates for mapping market landscapes:  XY market maps, petal diagrams, and flow charts.  Below, we illustrate each of these three templates for Authorea©, a collaborative research platform, and describe the advantages of each type of visualization.</p>
 
                     <span class="meta" style="font-weight:bold">XY Market Maps</span>
 
@@ -207,8 +197,8 @@ dimensions.  It should be used to demonstrate how your company is superior to it
 competition on a combination of two specific attributes.  The XY Market Map is the best 
 
 choice to express product differentiation.</blockquote>
-                        <img class="img-responsive" src="img/xy.png" alt="">
-                    <span class="caption text-muted">Insert one liner here</span>
+                        <img class="img-responsive center-block" src="img/xy.png" alt="">
+                    <span class="caption text-muted">Traditional Positional Map</span>
                     <span class="meta" style="font-weight:bold">Petal Diagrams</span>
                     <blockquote>Petal diagrams demonstrate where within a crowded landscape your company intends to 
 
@@ -216,14 +206,14 @@ play.  It should be used to illustrate that your company serves a variety of ind
 
 and/or markets, and signal that your potential market size is very large.</blockquote>
                   
-                        <img class="img-responsive" src="img/petal2.png" alt="">
+                        <img class="img-responsive center-block" src="img/petal2.png" alt="">
                     <span class="meta" style="font-weight:bold">Flow Charts</span>
                     <blockquote>Flow charts show your company’s position in a value chain – how you are filling a 
 
 critical gap within an existing process.  It will directly list your complementors; that is, 
 
 businesses and services that directly provide you input or use your output.</blockquote>
- <img class="img-responsive" src="img/flow2.png" alt="">
+ <img class="img-responsive center-block" src="img/flow2.png" alt="">
     
                     <h2 class="section-heading">Our Solution</h2>
 

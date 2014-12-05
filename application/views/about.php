@@ -31,6 +31,7 @@
 <style>
 
 .profile-circular {
+/*min-height: 200; */
 width: 200px;
 height: 200px;
 background-size: cover;
@@ -114,7 +115,7 @@ border-radius: 100px;
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Samples</a>
+                        <a href="home">Demo</a>
                     </li>
                     <li class="page-scroll">
                         <a href="about">About</a>
@@ -151,7 +152,9 @@ border-radius: 100px;
     <!-- Main Content -->
     <div class="container">
         <div class="row" style="text-align:center">
-        <p>Insert Another small project descrption</p>
+        <p>Frustrated that there was no easy way to quickly make visually appealing and accurate market maps, our team of Cornell Tech students developed marketmap.me for founders, investors, and analysts.  We are excited about the potential for marketmap.me to revolutionize competitive landscape visualization. 
+ 
+We’d love to hear from you!  Contact us at marketmap.me@gmail.com with questions, ideas, or feedback.</p>
         </div>
         <div class="row">
             <div class="col-md-8"> 

@@ -6,6 +6,9 @@
 
 body {
     background-color: #f8f8f8;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+
 }
 
 #wrapper {
@@ -27,6 +30,18 @@ body {
     }
 }
 
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: -90px;
+  }
+}
+
+.navbar {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
 .navbar-top-links {
     margin-right: 0;
 }

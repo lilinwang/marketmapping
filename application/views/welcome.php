@@ -86,8 +86,8 @@
                             <i class="fa fa-line-chart"></i> Go to Demo
                             </a>
                          </div>
-                        <span class="skills">MarketMap is a free to use graphing tool for plotting compeitor maps</span>
-                            <span class="skills">We make it easy to incorporate logos in your pitch deck</span>
+                        <span class="skills">MarketMap.me is a free to use graphing tool for plotting market maps.</span>
+                            <span class="skills">Create a formatted map with competitor logos in less than one minute!</span>
                     </div>
                 </div>
             </div>
@@ -168,8 +168,10 @@
                 <div class="col-lg-12 text-center">
                     <h2>Links</h2>
                     <hr class="star-primary">
-                        <p>Mapping the competitive landscape of a new industry has traditionally been a tremendously unstructured and painstaking process. Finding competitors and press logos and standaridizing them in PowerPoint takes more time than it should.</p>
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <p>Here are some links we’ve found very helpful for thinking about market mapping, competitive research, and pitching ideas to investors. Enjoy!</p>
                 </div>
+            </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                         <a href="links" class="btn btn-lg btn-links">
                         <i class="fa fa-line-chart"></i> See Links

@@ -48,16 +48,6 @@ hr.small {
   border-color: white;
 }
 
-.profile-circular {
-width: 200px;
-height: 200px;
-background-image: url('img/teten.jpg');
-background-size: cover;
-display: block;
-border-radius: 100px;
--webkit-border-radius: 100px;
--moz-border-radius: 100px;
-}
 
 .intro-header {
   background-color: #808080;
@@ -79,7 +69,7 @@ border-radius: 100px;
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 150px 0;
+    padding-top: 150px 0;
   }
 }
 .intro-header .site-heading,

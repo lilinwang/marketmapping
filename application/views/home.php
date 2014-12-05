@@ -93,7 +93,11 @@
 		$trashcan.click(function() {
 			$("#logos > a").remove();
 		});
-		
+		$("#company_name").keyup(function(event){
+			if(event.keyCode == 13){
+				$("#search-icon").click();
+			}
+		});
 		$('body').on('click','#save_image',function(){
       	    html2canvas($('#myImage'), {
       	            onrendered: function(canvas) {

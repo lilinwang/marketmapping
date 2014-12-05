@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gaps - Market Maps on the fly</title>
+    <title>MarketMap - Market Maps on the fly</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">Gaps</a>
+                <a class="navbar-brand" href="#page-top">MarketMap</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -86,7 +86,8 @@
                             <i class="fa fa-line-chart"></i> Go to Demo
                             </a>
                          </div>
-                        <span class="skills">Insert more information about the tool here</span>
+                        <span class="skills">MarketMap is a free to use graphing tool for plotting compeitor maps</span>
+                            <span class="skills">We make it easy to incorporate logos in your pitch deck</span>
                     </div>
                 </div>
             </div>
@@ -148,15 +149,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p>Mapping the competitive landscape of a new industry has traditionally been a tremendously unstructured and painstaking process. Finding competitors and press logos and standaridizing them in PowerPoint takes more time than it should.</p>
-                </div>
-                <div class="col-lg-4">
-                    <p>Our tool allows founders and VCs to quickly develop an industry market map on the fly.  We source logo images and let you, the expert, decide how to position the competition on dimensions of your choice. </p>
+                <div class="col-lg-4 col-lg-offset-4 text-center">
+                    <p>Marketmap.me is an experimental project by a team of Cornell Tech students in collaboration with ff Venture Capital.  The team is considering formally launching Marketmap.me, and is seeking additional team members with interest in this project.</p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-line-chart"></i> Go to Demo
+                    <a href="about" class="btn btn-lg btn-about">
+                        <i class="fa fa-line-chart"></i> Learn More
                     </a>
                 </div>
             </div>
@@ -164,32 +162,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="links">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Testimonial</h2>
+                    <h2>Links</h2>
                     <hr class="star-primary">
-                                <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <img class="profile-circular center-block" src="img/teten.jpg">
-                  </div>
-                <div class="col-lg-4">
-					<blockquote>
-						<p class="clients-words text-align">"I recommend Gaps for founders to use in all their pitch decks!"</p>
-						<span class="clients-name text-primary">— David Teten, Partner at ff VC</span>
-				</div>
-					</blockquote>
+                        <p>Mapping the competitive landscape of a new industry has traditionally been a tremendously unstructured and painstaking process. Finding competitors and press logos and standaridizing them in PowerPoint takes more time than it should.</p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-line-chart"></i> Go to Demo
+                        <a href="links" class="btn btn-lg btn-links">
+                        <i class="fa fa-line-chart"></i> See Links
                     </a>
+
+            </div>
                 </div>
             </div>
-            </div>
-        </div>
-       </div>
     </section>
 
 
@@ -213,25 +201,19 @@
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/marketmap.me" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                <a href="https://twitter.com/marketmapme" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a href="mailto:marketmap.me@gmail.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Gaps</h3>
-                        <p>Gaps is a free to use graphing tool for plotting compeitor maps. We make it easy to incorporate logos in your pitch deck</p>
+                        <h3>About MarketMap</h3>
+                        <p>MarketMap is a free to use graphing tool for plotting compeitor maps. We make it easy to incorporate logos in your pitch deck</p>
                     </div>
                 </div>
             </div>
@@ -240,7 +222,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Gaps 2014
+                        Copyright &copy; MarketMap 2014
                     </div>
                 </div>
             </div>

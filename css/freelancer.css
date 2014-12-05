@@ -272,6 +272,42 @@ section.success {
     background: #fff;
 }
 
+
+.btn-about {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: solid 2px #fff;
+    font-size: 20px;
+    color: #fff;
+    background: #E8B97B;
+    transition: all .3s ease-in-out;
+}
+.btn-about:hover,
+.btn-about:focus,
+.btn-about:active,
+.btn-about.active {
+    border: solid 2px #fff;
+    color: #40417C;
+    background: #fff;
+}
+
+.btn-links {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: solid 2px #fff;
+    font-size: 20px;
+    color: #fff;
+    background: #E8B97B;
+    transition: all .3s ease-in-out;
+}
+.btn-links:hover,
+.btn-links:focus,
+.btn-links:active,
+.btn-links.active {
+    border: solid 2px #fff;
+    color: #40417C;
+    background: #18bc9c;
+}
 .floating-label-form-group {
     position: relative;
     margin-bottom: 0;

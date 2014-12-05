@@ -3,3 +3,6 @@ config.php
 database.php
 routes.php
 **/cache
+.htaccess
+**/uploads
+**/system

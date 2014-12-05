@@ -43,7 +43,7 @@ class Ajax extends CI_Controller {
 								
 		$name=$_FILES['file']['name'];
 		$source='http://localhost/marketmapping/timthumb?src=http://localhost/marketmapping/'.$dest;
-		$source=$source."&h=100&w=150&zc=2";
+		$source=$source."&h=100&w=100&zc=2";
 		$newdest='./image/'.$name;
 							
 		copy($source, $newdest); 

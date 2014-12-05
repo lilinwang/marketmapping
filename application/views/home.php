@@ -128,38 +128,30 @@
 				data = eval("(" + data + ")");
 				//console.log(data);
 				for (i=0;i<data.length;i++){					
-					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();
-					setTimeout(function () {
-                $('#search-icon').html('<i class="fa fa-search"></i>');
-            }, 200);
+					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();					                
 				}													
+				$('#search-icon').html('<i class="fa fa-search"></i>');
 			});            
 			//$('#search-icon').toggleClass('fa-spinner fa-search');
 	};
 	function upload(){		
 		$('#upload-icon').html('<i class="fa fa-spin fa-spinner"></i>');
-		//alert('wll');alert($('#upload-icon').class());
+		
 		var file_data = $("#userfile").prop("files")[0];   
 		var form_data = new FormData();                  
 		form_data.append("file", file_data);                         
 		$.ajax({
-                url: "ajax/upload",
-                dataType: 'script',
+                url: "ajax/upload",               
                 cache: false,
                 contentType: false,
                 processData: false,
                 data: form_data,                         
                 type: 'post',
-				async:false,
 				enctype: 'multipart/form-data',
                 complete: function(data){				
 					console.log(data['responseText']);							
-					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   
-					//$('#upload-icon').attr('class','fa fa-upload');
-					setTimeout(function () {
-                $('#upload-icon').html('<i class="fa fa-upload"></i>');
-            }, 200);
-					//$('#upload-icon').html('<i class="fa fa-upload"></i>');
+					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   					
+					$('#upload-icon').html('<i class="fa fa-upload"></i>');					
                 }
 		});				            			     	
 		

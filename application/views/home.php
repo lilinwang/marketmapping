@@ -67,7 +67,7 @@
 				var pos=ui.helper.position();
 				alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
 				if ((event.pageX-event.offsetX)<pos.left){
-					dropElem.css('top', pos.top+event.pageY-40);
+					dropElem.css('top', pos.top+event.pageY-58);
 					dropElem.css('left', pos.left);
 				}else{
 					dropElem.css('top', event.pageY-event.offsetY);
@@ -132,14 +132,15 @@
 		});		
 	});
 	
-	function clear_all(){
-		$(".canvas-image").remove();
-		$('#axis_top').val('');
-		$('#axis_bottom').val('');
-		$('#axis_left').val('');
-		$('#axis_right').val('');
-		$('#canvas_title').val('');
-		
+	function clear_all(){		
+		if (confirm("Are you sure you want to clear the map?") == true) {
+			$(".canvas-image").remove();
+			$('#axis_top').val('');
+			$('#axis_bottom').val('');
+			$('#axis_left').val('');
+			$('#axis_right').val('');
+			$('#canvas_title').val('');
+		} 			
 	}
 	function search_name(){	
 			//$('#logos').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
@@ -149,6 +150,10 @@
 				return;
 			}
 			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
+			if (document.getElementsByName(document.getElementById("company_name").value).length>0){
+				alert("Oops! You already searched this company!");
+				return;
+			}
 	     	$.post("ajax/get_img", 
 			{								
 				crunchbase_url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c",
@@ -162,7 +167,7 @@
 						alert("Company not found! Try another one!");
 						break;						
 					};
-					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable({
+					$("<a class=\"pull-front\" name=\""+document.getElementById("company_name").value+"\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable({
 						//revert: 'invalid',
 						helper: function(){
 							$copy = $(this).clone();
@@ -184,7 +189,6 @@
 				}													
 				$('#search-icon').html('<i class="fa fa-search"></i>');
 			});            
-			//$('#search-icon').toggleClass('fa-spinner fa-search');
 	};
 	function upload(){						
 		var file_data = $("#userfile").prop("files")[0];   		

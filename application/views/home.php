@@ -18,7 +18,7 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">	
 	<!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/css.css">
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -37,8 +37,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>    
     <script type="text/javascript" src="js/bootstrap-filestyle.js"> </script>
-	<script type="text/javascript" src="js/enscroll-0.6.0.min.js"> </script>
-   
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,7 +61,8 @@
 			//activeClass: "custom-state-active",
 			activeClass: "ui-state-highlight",
 			drop: function( event, ui ) {				
-				var dropElem = ui.draggable;				
+				$.ui.ddmanager.current.cancelHelperRemoval = true;
+				var dropElem = ui.helper;//ui.draggable;				
 				dropElem.css('position', 'absolute');
 				dropElem.css('top', ui.position.top+$(this).offset().top+111);
 				dropElem.css('left', ui.position.left+$(this).offset().left-370);
@@ -70,6 +70,7 @@
 				dropElem.addClass('canvas-image');
 				$(this).append(dropElem);
 				//$(this).append(ui.draggable.css({position: 'static'});
+				ui.draggable.remove();
 				alert(ui.position.top);
 				//recycleImage( ui.draggable );
 			}
@@ -129,11 +130,7 @@
 			}
 		});*/
 	});
-	$('#logos').enscroll({
-		showOnHover: false,
-		verticalTrackClass: 'track3',
-		verticalHandleClass: 'handle3'
-	});
+	
 	function clear_all(){
 		$(".canvas-image").remove();
 		$('#axis_top').val('');
@@ -156,7 +153,25 @@
 				data = eval("(" + data + ")");
 				//console.log(data);
 				for (i=0;i<data.length;i++){					
-					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();					                
+					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable({
+						//revert: 'invalid',
+						helper: function(){
+							$copy = $(this).clone();
+							return $copy;
+						},
+						start: function(event, ui) {
+							dropped = false;
+							$(this).addClass("hide");
+						},
+						stop: function(event, ui) {
+							if (dropped==true) {
+								$(this).remove();
+							} else {
+								$(this).removeClass("hide");
+							}
+							//$('#'+$(this).attr('id')).draggable({revert: 'invalid'});
+						}       
+					});					                
 				}													
 				$('#search-icon').html('<i class="fa fa-search"></i>');
 			});            
@@ -178,9 +193,28 @@
                 data: form_data,                         
                 type: 'post',
 				enctype: 'multipart/form-data',
+
                 complete: function(data){				
 					console.log(data['responseText']);							
-					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   					
+					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable({
+						//revert: 'invalid',
+						helper: function(){
+							$copy = $(this).clone();
+							return $copy;
+						},
+						start: function(event, ui) {
+							dropped = false;
+							$(this).addClass("hide");
+						},
+						stop: function(event, ui) {
+							if (dropped==true) {
+								$(this).remove();
+							} else {
+								$(this).removeClass("hide");
+							}
+							//$('#'+$(this).attr('id')).draggable({revert: 'invalid'});
+						}       
+					});					                   					
 					$('#upload-icon').html('<i class="fa fa-upload"></i>');					
                 }
 			});				            			     	
@@ -215,7 +249,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown<button class="btn btn-default" id="save_image" name="submit" type="button">Export Image</button>
                      -->				
-                <li class="dropdown">
+                <!--<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
                         Save <i class="fa fa-cloud-download"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -237,9 +271,8 @@
                         </li>                        
                                                 
                     </ul>
-                    <!-- /.dropdown-tasks -->
                 </li>
-                
+                -->
             </ul>
             <!-- /.navbar-top-links -->
 
@@ -281,15 +314,52 @@
 						<ul>
 
 						</ul>
-						<li style="text-align:right">
-							<button id="trash-can" class="btn btn-default" type="button">
-                                 <i class="fa fa-trash-o fa-5x"></i>
-                            </button>
-  							
-  						</li>
-                    </ul>
-                   
-                </div>
+						<li style="text-align:right" >
+							<li class="dropup same-line"style="width:85px;">
+							<a id="paint" type="button" class="dropdown-toggle" data-toggle="dropup" href="#" >
+								 <i class="fa fa-paint-brush fa-4x"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-tasks" style="width:200px">
+								<li id="canvas-style" style="margin-left:10px">							                             
+									<p><strong>Style:</strong></p>							
+									<button class="btn" id="canvas-white" style="padding:0;background:transparent;"><img  src="img/style138.png" /></button>
+									<button class="btn" id="canvas-gray" style="padding:0;background:transparent;"><img  src="img/style139.png" /></button>
+									<button class="btn" id="canvas-ivory" style="padding:0;background:transparent;"><img src="img/style140.png" /> </button>
+									<button class="btn" id="canvas-blue" style="padding:0;background:transparent;"><img  src="img/style141.png" /> </button>
+													
+								</li>
+								<li class="divider"></li>								                       							           
+							</ul>
+							</li>
+							
+							<li class="dropup same-line" style="width:85px;">
+							<a id="download" type="button" class="dropdown-toggle" data-toggle="dropup" href="#" >
+								<i class="fa fa-cloud-download fa-4x"></i>  
+							</a>
+							
+							<ul class="dropdown-menu dropdown-tasks">
+								<li>
+									<a href="#" id="save_image" >
+										Save as PDF  
+									</a>
+								</li>    
+								<li>
+									<a href="#" id="save_image" >
+										Save as PNG  
+									</a>
+								</li>                        							            
+							</ul>
+							</li>
+							<li class="dropup same-line" >
+							<button id="trash-can" class="btn btn-default" style="height:77px">
+								<i class="fa fa-trash-o fa-5x"></i>  
+							</button>
+																				
+							</li>							
+							
+						</li>
+					</ul>
+				</div>							                                  
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
@@ -298,7 +368,7 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-				<button id="trash-can" class="btn btn-default" type="button" onclick="clear_all()">
+				<button class="btn btn-default" onclick="clear_all()">
                     Clear canvas
                 </button>
 				<div id="myImage">
@@ -352,6 +422,10 @@
 	$('#canvas-ivory').click(function(e) {
 		e.stopPropagation();
 		$('#squares').css('background','#FFFFF0');
+	});
+	$('#canvas-blue').click(function(e) {
+		e.stopPropagation();
+		$('#squares').css('background','#ECFFFF');
 	});
 </script>
 </body>

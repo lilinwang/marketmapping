@@ -357,7 +357,7 @@
 							</ul>
 							</li>
 							<li class="dropup same-line" >
-							<button id="trash-can" class="btn btn-default" style="height:77px;width:80px;">
+							<button id="trash-can" class="btn btn-default" style="height:85px;width:80px;">
 								<i class="fa fa-trash-o fa-4x"></i>  
 							</button>
 																				
@@ -374,10 +374,10 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-				<button class="btn btn-default" onclick="clear_all()">
+				<button class="btn btn-default" style="margin-top:60px;float:right;"onclick="clear_all()">
                     Clear canvas
                 </button>
-				<div id="myImage" style="margin-top:40px">
+				<div id="myImage" style="margin-top:40px;padding-bottom:20px;">
 					<div class="map-title">
 						<input type="text" id="canvas_title" placeholder="Tittle of Map"  class="canvas-title">											
 					</div>
@@ -399,7 +399,7 @@
 						<ul id="axis_bottom_list"></ul> 			         		      	  				  
 					</div>
 					<div class="label-left">     			        
-						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="X Axis" class="axis-label">
+						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:center" class="axis-label">
 						<ul id="axis_left_list"></ul>
 					</div>
 					<div class="label-right">   	

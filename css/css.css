@@ -1,34 +1,75 @@
 
-	#squares{
-		z-index:-1;
+
+#logos {
+    overflow: auto;
+	height:400px;
+}
+
+.track3 {
+    width: 10px;
+    background: rgba(0, 0, 0, 0);
+    margin-right: 2px;
+    border-radius: 10px;
+    -webkit-transition: background 250ms linear;
+    transition: background 250ms linear;
+}
+
+.track3:hover,
+.track3.dragging {
+    background: #d9d9d9; 
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.handle3 {
+    width: 7px;
+    right: 0;
+    background: #999;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms;
+}
+
+.track3:hover .handle3,
+.track3.dragging .handle3 {
+    width: 10px;
+}
+
+	#squares{		
 		background:#0000;
 		width:900px;
 		height:900px;		
 		border:1px solid #aaaaaa;	
 		margin-left:50px;
 	}
+	#trash-can{
+		z-index:-1;
+	}
+	.pull-front{
+		z-index:100;
+	}
 	.label-top{
 		position:absolute;
 		left:800px;
-		top:85px;
+		top:115px;
 		width:150px;		
 	}
 	.label-bottom{
 		position:absolute;
 		left:800px;
-		top:955px;
+		top:985px;
 		width:150px;		
 	}
 	.label-left{
 		position:absolute;
 		left:350px;
-		top:535px;
+		top:565px;
 		width:150px;		
 	}
 	.label-right{
 		position:absolute;
 		left:1133px;
-		top:535px;
+		top:565px;
 		width:150px;		
 	}
 .label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
@@ -40,6 +81,4 @@
 }
 .label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li :hover {
 	background: #eaeaea;
-}
-	
-	
+}	

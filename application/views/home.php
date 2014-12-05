@@ -11,13 +11,15 @@
 	
 	<title >MarketMapping</title>
 	
-	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/css.css">
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">	
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">		
     <!-- MetisMenu CSS -->
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">	
+	<!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/css.css">
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -35,10 +37,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>    
     <script type="text/javascript" src="js/bootstrap-filestyle.js"> </script>
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+	<script type="text/javascript" src="js/enscroll-0.6.0.min.js"> </script>
+   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,26 +55,41 @@
 	$(document).ready(function() {
 		var $logos=$("#logos"),
 			$transfer=$("#squares");
+			$trashcan=$("#trash-can");
 		
 		$transfer.droppable({
 			accept: "#logos > a",
 			//activeClass: "custom-state-active",
 			activeClass: "ui-state-highlight",
-			drop: function( event, ui ) {
-				
+			drop: function( event, ui ) {				
 				var dropElem = ui.draggable;				
 				dropElem.css('position', 'absolute');
 				dropElem.css('top', ui.position.top+$(this).offset().top+111);
 				dropElem.css('left', ui.position.left+$(this).offset().left-370);
-
+				dropElem.css('z-index', 100);
+				dropElem.addClass('canvas-image');
 				$(this).append(dropElem);
 				//$(this).append(ui.draggable.css({position: 'static'});
 				alert(ui.position.top);
 				//recycleImage( ui.draggable );
 			}
 		});
+		
+		$trashcan.droppable({
+			//accept: "#logos > a",
+			//activeClass: "custom-state-active",
+			activeClass: "ui-state-highlight",
+			drop: function( event, ui ) {				
+				var dropElem = ui.draggable;
+				dropElem.remove();				
+			}
+		});
+		$trashcan.click(function() {
+			$("#logos > a").remove();
+		});
+		
 		$('body').on('click','#save_image',function(){
-      	    html2canvas($('.myImage'), {
+      	    html2canvas($('#myImage'), {
       	            onrendered: function(canvas) {
       		            //$('.imageHolder').html(canvas);
       		                var dataURL = canvas.toDataURL("image/png");
@@ -114,7 +129,20 @@
 			}
 		});*/
 	});
-
+	$('#logos').enscroll({
+		showOnHover: false,
+		verticalTrackClass: 'track3',
+		verticalHandleClass: 'handle3'
+	});
+	function clear_all(){
+		$(".canvas-image").remove();
+		$('#axis_top').val('');
+		$('#axis_bottom').val('');
+		$('#axis_left').val('');
+		$('#axis_right').val('');
+		$('#canvas_title').val('');
+		
+	}
 	function search_name(){	
 			//$('#logos').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
 			//$('#search-icon').toggleClass('fa-search fa-spinner');
@@ -128,19 +156,21 @@
 				data = eval("(" + data + ")");
 				//console.log(data);
 				for (i=0;i<data.length;i++){					
-					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();					                
+					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable();					                
 				}													
 				$('#search-icon').html('<i class="fa fa-search"></i>');
 			});            
 			//$('#search-icon').toggleClass('fa-spinner fa-search');
 	};
-	function upload(){		
-		$('#upload-icon').html('<i class="fa fa-spin fa-spinner"></i>');
+	function upload(){						
+		var file_data = $("#userfile").prop("files")[0];   		
+		var fileName = $("#userfile").val();
 		
-		var file_data = $("#userfile").prop("files")[0];   
-		var form_data = new FormData();                  
-		form_data.append("file", file_data);                         
-		$.ajax({
+		if(fileName.lastIndexOf("png")===fileName.length-3 || fileName.lastIndexOf("jpg")===fileName.length-3){								
+			$('#upload-icon').html('<i class="fa fa-spin fa-spinner"></i>');
+			var form_data = new FormData();                  
+			form_data.append("file", file_data);                         
+			$.ajax({
                 url: "ajax/upload",               
                 cache: false,
                 contentType: false,
@@ -150,11 +180,13 @@
 				enctype: 'multipart/form-data',
                 complete: function(data){				
 					console.log(data['responseText']);							
-					$("<a class=\"pull-left\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   					
+					$("<a class=\"pull-front\" href=\"#\"> <img src=\""+data['responseText']+"\" ></a>").appendTo("#logos").draggable();					                   					
 					$('#upload-icon').html('<i class="fa fa-upload"></i>');					
                 }
-		});				            			     	
-		
+			});				            			     	
+		}else{
+			alert("Not file choosen!");
+		}
 	};			
 	
 </script>		
@@ -249,8 +281,11 @@
 						<ul>
 
 						</ul>
-						<li style="text-align:center">
-  							<i class="fa fa-trash-o fa-5x"></i>
+						<li style="text-align:right">
+							<button id="trash-can" class="btn btn-default" type="button">
+                                 <i class="fa fa-trash-o fa-5x"></i>
+                            </button>
+  							
   						</li>
                     </ul>
                    
@@ -263,9 +298,12 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-				<div class="myImage">
+				<button id="trash-can" class="btn btn-default" type="button" onclick="clear_all()">
+                    Clear canvas
+                </button>
+				<div id="myImage">
 					<div class="map-title">
-						<p contenteditable="true" style="text-align:center">xx vs. competitors</p>     
+						<input type="text" id="canvas_title" placeholder="xx vs. competitors" style="width:100%;text-align:center;border: 0px solid;background-color: transparent;">											
 					</div>
 					
 					<div id="squares">   

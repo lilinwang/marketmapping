@@ -106,7 +106,7 @@ color: #6C6AB8;
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Samples</a>
+                        <a href="home">Demo</a>
                     </li>
                     <li class="page-scroll">
                         <a href="about">About</a>

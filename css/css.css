@@ -1,34 +1,57 @@
 
-	#squares{
-		z-index:-1;
+
+#logos {
+    overflow-y: auto;
+	overflow-x:hidden;
+	height:400px;
+	width:235px;
+	float:left;
+	margin-left:15px;
+}
+
+
+.same-line{
+	display: block;
+    float: left;
+    margin: 0;
+    width: 25%;
+}
+
+	#squares{		
 		background:#0000;
 		width:900px;
 		height:900px;		
 		border:1px solid #aaaaaa;	
 		margin-left:50px;
 	}
+	#trash-can{
+		z-index:-1;
+	}
+	.pull-front{
+		z-index:100;
+	}
 	.label-top{
 		position:absolute;
 		left:800px;
-		top:85px;
+		top:115px;
 		width:150px;		
 	}
 	.label-bottom{
 		position:absolute;
 		left:800px;
-		top:955px;
+		top:985px;
 		width:150px;		
 	}
 	.label-left{
 		position:absolute;
 		left:350px;
-		top:535px;
+		top:565px;
 		width:150px;		
 	}
 	.label-right{
 		position:absolute;
 		left:1133px;
-		top:535px;
+		top:565px;
 		width:150px;		
 	}
 .label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
@@ -40,6 +63,4 @@
 }
 .label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li :hover {
 	background: #eaeaea;
-}
-	
-	
+}	

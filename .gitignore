@@ -1,8 +1,7 @@
-**/config
-config.php
-database.php
-routes.php
+**/application/config
 **/cache
 .htaccess
 **/uploads
+**/system
+**/image
 **/system

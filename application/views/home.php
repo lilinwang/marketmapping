@@ -149,11 +149,12 @@
 				alert("Please input company name!");
 				return;
 			}
-			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
+			
 			if (document.getElementsByName(document.getElementById("company_name").value).length>0){
 				alert("Oops! You already searched this company!");
 				return;
 			}
+			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
 	     	$.post("ajax/get_img", 
 			{								
 				crunchbase_url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c",
@@ -410,7 +411,7 @@
 						<ul id="axis_left_list"></ul>
 					</div>
 					<div class="label-right">   	
-						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." class="axis-label">
+						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="axis.." style="text-align:center;"class="axis-label">
 						<ul id="axis_right_list"></ul>
 					</div>
 				</div>               

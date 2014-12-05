@@ -50,22 +50,29 @@
 	}
 	.label-right{
 		position:absolute;
-		left:1133px;
+		left:1095px;
 		top:575px;
-		width:150px;		
+		width:150px;
+		text-align:center;		
 	}
+
 .label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
 	width: 150px;	
 	position: absolute;
 	z-index: 9;
 	background: #f3f3f3;
 	list-style: none;
+	padding:0;
+	margin:0;
 }
-.label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li :hover {
+.label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li {
+	padding: 2px;
+}	
+.label-top ul li:hover,.label-bottom ul li:hover,.label-left ul li:hover,.label-right ul  li :hover {
 	background: #eaeaea;
 }	
 .axis-label{
-	border: 0px solid;background-color: transparent;height:28px;width:150px;font-size:20px;
+	border: 0px solid;background-color: transparent;height:28px;width:150px;font-size:18px;
 }
 .canvas-title{
 	width:100%;text-align:center;border: 0px solid;background-color: transparent;height:36px;font-size:24px;

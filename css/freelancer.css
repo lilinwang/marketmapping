@@ -106,6 +106,8 @@ header .intro-text .name {
 header .intro-text .skills {
     font-size: 1.25em;
     font-weight: 300;
+    white-space:nowrap;
+    margin: 20px;
 }
 
 @media(min-width:768px) {
@@ -251,12 +253,13 @@ section.success {
     }
 }
 
-.btn-outline {
+.btn-demo {
     margin-top: 15px;
+    margin-bottom: 20px;
     border: solid 2px #fff;
     font-size: 20px;
     color: #fff;
-    background: 0 0;
+    background: #40417C;
     transition: all .3s ease-in-out;
 }
 

@@ -216,7 +216,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">								
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search..." id="company_name">
+                                <input type="text" class="form-control" placeholder="Search for Logo" id="company_name">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" onclick="search_name()" name="submit" type="button" id="search-icon">
                                         <i class="fa fa-search" ></i>
@@ -241,12 +241,19 @@
                             </div>						
                         </li>                        
 						<li>
-							<div class="logos-class">
+							<div class="logos-class" style="height:400px">
 								<div id="logos">		
 								</div>
 							</div>
 						</li>
+						<ul>
+
+						</ul>
+						<li style="text-align:center">
+  							<i class="fa fa-trash-o fa-5x"></i>
+  						</li>
                     </ul>
+                   
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

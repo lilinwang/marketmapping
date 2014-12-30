@@ -142,51 +142,45 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <h2> The Problem </h2>
-                    <p>Mapping the competitive landscape of a new industry has traditionally been a tremendously 
+                    <p>Mapping the competitive landscape of a new industry has traditionally been 
+                    a tremendously unstructured and inefficient process. MarketMap allows founders, 
+                    investors, and industry analysts to quickly develop an industry market map on the fly. 
+                    We source and size logo images and let you decide how to position the competition on 
+                    dimensions of your choice, while leveraging the collective wisdom of our community. 
+                    The entire process takes less than 30 seconds to complete.</p>
 
-unstructured and painstaking process.  marketmap.me allows founders, venture capitalists, and 
-
-investment analysts to quickly develop an industry market map on the fly.  We source and size 
-
-logo images and let you decide how to position the competition on dimensions of your choice.  
-
-The entire process takes less than 30 seconds to complete.</p>
-
-                    <p>Our team set out to identify a way to produce reliable market landscapes based on quantifiable 
-
-data.  We engaged in extensive research efforts to pinpoint sources of such quantifiable data.  
-
-Unfortunately, very few tangible metrics of substance are available, especially for new and 
-
-relatively undefined markets.  Companies such as DataFox© and Mattermark© provide the 
-
-concrete metrics which can be ascertained from existing sources; among them, Twitter followers, 
-
-Linkedin followers, Alexa rank, and funding history.  As such, there is little additional value that 
-
-can be added for founders and investors that are interested in comparing companies based on 
-
-these quantifiable metrics.  In speaking with founders and investors, our team identified a very 
-
-real and frustrating challenge - accurately mapping landscapes on non-quantifiable metrics such 
-
-as ease of use, customer segmentation, reputation, etc.</p>
+                    <p>Our team set out to identify a way to produce reliable market landscapes based on 
+                    quantifiable data. We engaged in extensive research efforts to pinpoint sources of 
+                    such quantifiable data. Unfortunately, very few tangible metrics of substance are 
+                    available, especially for new and relatively undefined markets. Companies such as 
+                    <a href="https://www.cbinsights.com/">CBInsights</a>, <a href="http://www.crunchbase.com/">Crunchbase</a>, 
+                    <a href="http://www.privco.com/">Privco</a>, <a href="http://www.datafox.co/">DataFox©</a> 
+                    and <a href="http://mattermark.com/">Mattermark©</a> provide some concrete metrics 
+                    from public sources; among them, Twitter followers, Linkedin followers, Alexa rank, 
+                    and funding history.  However, in speaking with founders and investors, our team 
+                    identified a very real and frustrating challenge - accurately mapping landscapes 
+                    on non-quantifiable metrics such as ease of use, customer segmentation, reputation, etc.</p>
 
                     <h2 class="section-heading">Our Failures</h2>
 
-                    <p>Our team explored various options for creating standardized market maps based on qualitative 
-
-dimensions.  However, such data simply does not exist objectively.  We next tried to execute 
-
-survey-based approaches to gather sentiments of founders and investors.  This attempt was not 
-
-well received by our targeted audience, and highlighted to us that each case of creating a market 
-
-map was a very unique and generally non-repeatable endeavor.</p>
+                    <p>Our team explored various options for creating standardized market maps based on 
+                    qualitative dimensions, e.g., “Mobile-centric vs. Desktop-centric”. However, it’s 
+                    hard to measure these sort of qualitative measures in a rigorous quantitative way.  
+                    We next tried to execute survey-based approaches to gather sentiments of founders and 
+                    investors. However, our audience was not responsive to this; it was a poor way to obtain data.  </p>
 
                     <h2 class="section-heading">Our Lessons Learned</h2>
 
-                    <p>Our engagement with individuals who need to create market maps has led us to the hypothesis that visualization of a new company’s position against its competitors through different lenses can be the best way to communicate to investors or consumers where a company lies within its competitive landscape, and convey how the company creates value and differentiates itself.  In particular, our team has identified the three most relevant and revealing templates for mapping market landscapes:  XY market maps, petal diagrams, and flow charts.  Below, we illustrate each of these three templates for Authorea©, a collaborative research platform, and describe the advantages of each type of visualization.</p>
+                    <p>Our engagement with individuals who need to create market maps has led us to the 
+                    hypothesis that visualization of a new company’s position against its competitors 
+                    through different lenses can be the best way to communicate to investors or consumers 
+                    where a company lies within its competitive landscape, and convey how the company 
+                    creates value and differentiates itself. In particular, our team has identified the 
+                    three most relevant and revealing templates for mapping market landscapes: XY market 
+                    maps, petal diagrams, and flow charts. Below, we illustrate each of these three templates 
+                    for <a href="https://www.authorea.com/">Authorea©</a>, a collaborative research platform 
+                    and <a href="http://ffvc.com/">ff Venture Capital</a> portfolio company, and describe 
+                    the advantages of each type of visualization.</p>
 
                     <span class="meta" style="font-weight:bold">XY Market Maps</span>
 
@@ -207,6 +201,9 @@ play.  It should be used to illustrate that your company serves a variety of ind
 and/or markets, and signal that your potential market size is very large.</blockquote>
                   
                         <img class="img-responsive center-block" src="img/petal.png" alt="">
+                        <span class="caption text-muted">Source: <a href="http://steveblank.com/2013/11/08/a-new-way-to-look-at-competitors/">
+                        http://steveblank.com/2013/11/08/a-new-way-to-look-at-competitors/</a></span>
+
                     <span class="meta" style="font-weight:bold">Flow Charts</span>
                     <blockquote>Flow charts show your company’s position in a value chain – how you are filling a 
 
@@ -217,29 +214,27 @@ businesses and services that directly provide you input or use your output.</blo
     
                     <h2 class="section-heading">Our Solution</h2>
 
-                    <p>Marketmap.me is a crowd-sourced market-mapping platform available to users for free to create
+                    <p>MarketMap is a crowd-sourced market-mapping platform available to users for 
+                    free to create market maps on the fly. Current best practices available for 
+                    strategic and competitive analysis are exclusively concentrated on established 
+                    and/or large companies and markets. At present, there are no trusted services 
+                    for creating market maps and competitor analyses for new industry companies or 
+                    sectors; in particular those that are disrupting existing markets or creating 
+                    new ones – companies like <a href="https://www.authorea.com/">Authorea</a>, 
+                    <a href="https://www.indiegogo.com/">Indiegogo</a>, and 
+                    <a href="https://www.plated.com/">Plated</a> (<a href="http://ffvc.com/">
+                    ff Venture Capital</a> portfolio companies).</p>
 
-market maps on the fly.  Current best practices available for strategic and competitive analysis 
+                    <p>On our platform, users can seamlessly identify their company and their competitors.  
+                    Users are presented with a canvas upon which to build their map. Currently, the canvas 
+                    is based on an XY market map. Eventually, will be able to choose from a variety of 
+                    positioning graphs, including those mentioned above. MarketMap sources company logos 
+                    from the internet and standardizes their size. The user then provides input into the 
+                    editable elements like the title and axes. The company logos generated by MarketMap are 
+                    placed onto the canvas and positioned. Finally, the user can export the completed canvas
+                    for use in documents and presentations.</p>
 
-are exclusively concentrated on established and/or large companies and markets. At present, 
-
-there are no trusted services for creating market maps and competitor analyses for new industry 
-
-companies or sectors; in particular those that are disrupting existing markets or creating new 
-
-ones – companies like Uber©, Airbnb©, and Coinbase©.</p>
-
-<p>On our platform, users can seamlessly identify their company and their competitors.  Next, users 
-
-can specify their intended graph type for comparison.  marketmap.me sources company logos 
-
-from the internet and standardizes their size.  Then, users can choose one of the three types of 
-
-positioning graphs discussed above:  traditional XY market maps, petal diagrams, and flow 
-
-charts.  Users are subsequently prompted to fill in their axis labels.</p>
-
-<p>Marketmap.me will build a crowd-sourced database of market maps for emerging industries 
+<p>Moving forward, Marketmap intends to build a crowd-sourced database of market maps for emerging industries 
 
 based on which companies our users are including in their market maps, where they are 
 

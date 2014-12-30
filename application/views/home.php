@@ -148,7 +148,7 @@
 	}
 	var opt={				
 		height: 150,
-        width: 250,
+        width: 210,
 		autoOpen: false,		
 	}
 	function search_name(){	
@@ -311,7 +311,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">								
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search for Logo" id="company_name">
+                                <input type="text" class="form-control" placeholder="Search for logo" id="company_name">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" onclick="search_name()" name="submit" type="button" id="search-icon">
                                         <i class="fa fa-search" ></i>
@@ -321,18 +321,17 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-							<div  class="input-group" style="width:230px;margin-left:15px;height:50px;">
-							<span class="input-group-btn">
+							<div class="input-group" style="width:200px;margin-left:15px;height:50px;">
+							<!--<span class="input-group-btn">-->
 								<span class="input-group-btn">
-								<input type="file" class="filestyle" data-icon="false" data-buttonText="Choose Logo file" id="userfile" name='userfile' >
+									<input type="file" class="filestyle" data-icon="false" data-buttonText="Upload logo" id="userfile" name='userfile' >
 								</span>
                                 <span class="input-group-btn">
-									
                                     <button class="btn btn-default" onclick="upload()" name="submit" type="button" id="upload-icon">
                                         <i class="fa fa-upload"></i>
                                     </button>
                                 </span>
-							</span>
+							<!--</span>-->
                             </div>						
                         </li>                        
 						<li>
@@ -347,11 +346,11 @@
 						<li style="text-align:right" >
 							<li class="dropup same-line"style="width:85px;">
 							<a id="paint" type="button" class="dropdown-toggle" data-toggle="dropup" href="#" >
-								 <i class="fa fa-paint-brush fa-4x"></i>
+								Style
+								<i class="fa fa-th-large fa-4x"></i>
 							</a>
 							<ul class="dropdown-menu dropdown-tasks" style="width:200px">
-								<li id="canvas-style" style="margin-left:10px">							                             
-									<p><strong>Style:</strong></p>							
+								<li id="canvas-style" style="margin-left:10px">
 									<button class="btn" id="canvas-white" style="padding:0;background:transparent;"><img  src="img/style138.png" /></button>
 									<button class="btn" id="canvas-gray" style="padding:0;background:transparent;"><img  src="img/style139.png" /></button>
 									<button class="btn" id="canvas-ivory" style="padding:0;background:transparent;"><img src="img/style140.png" /> </button>
@@ -364,6 +363,7 @@
 							
 							<li class="dropup same-line" style="width:90px;">
 							<a id="download" type="button" class="dropdown-toggle" data-toggle="dropup" href="#" >
+								Export
 								<i class="fa fa-cloud-download fa-4x"></i>  
 							</a>
 							
@@ -380,12 +380,13 @@
 								</li>                        							            
 							</ul>
 							</li>
-							<li class="dropup same-line" >
-							<button id="trash-can" class="btn btn-default" style="height:85px;width:75px;">
-								<i class="fa fa-trash-o fa-4x"></i>  
-							</button>
-																				
-							</li>							
+				<button id="trash-can" class="btn btn-default" style="width:100px;float:left">
+                    Clear logos
+                </button>
+				<button class="btn btn-default" style="width:110px;float:right" onclick="clear_all()">
+                    Clear canvas
+                </button>
+						
 							
 						</li>
 					</ul>
@@ -398,9 +399,7 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-				<button class="btn btn-default" style="margin-top:60px;float:right;"onclick="clear_all()">
-                    Clear canvas
-                </button>
+
 				<div id="myImage">
 					<div class="map-title">
 						<input type="text" id="canvas_title" placeholder="Title of Map"  class="canvas-title">											

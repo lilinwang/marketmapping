@@ -1,0 +1,86 @@
+
+#logos {
+    overflow-y: auto;
+	overflow-x:hidden;
+	height:400px;
+	width:235px;
+	float:left;
+	margin-left:15px;
+}
+
+#myImage{
+	margin-top:40px;padding-bottom:20px;
+	width:900px;
+	margin-left:50px;
+}
+.same-line{
+	display: block;
+    float: left;
+    margin: 0;
+    width: 25%;
+}
+
+	#squares{		
+		background:white;
+		
+		height:900px;		
+		border:1px solid #aaaaaa;	
+			
+	}
+	#trash-can{
+		z-index:-2;
+	}
+	.pull-front{
+		z-index:2;
+	}
+	.label-top{
+		position:relative;
+		left:452px;
+		top:-900px;
+		width:200px;		
+	}
+	.label-bottom{
+		position:relative;
+		left:452px;
+		top:-55px;
+		width:200px;		
+	}
+	.label-left{
+		position:relative;		
+		top:-507px;
+		left:2px;
+		width:200px;		
+	}
+	.label-right{
+		position:relative;
+		left:698px;
+		top:-535px;
+		width:200px;
+		text-align:center;		
+	}
+
+.label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
+	width: 200px;	
+	position: absolute;
+	z-index: 9;
+	background: #f3f3f3;
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+.label-top ul li,.label-bottom ul li,.label-left ul li,.label-right ul  li {
+	padding: 2px;
+}	
+.label-top ul li:hover,.label-bottom ul li:hover,.label-left ul li:hover,.label-right ul  li :hover {
+	background: #eaeaea;
+}	
+.axis-label{
+	border: 0px solid;background-color: transparent;height:28px;width:200px;font-size:18px;
+}
+.canvas-title{
+	width:100%;text-align:center;border: 0px solid;background-color: transparent;height:36px;font-size:24px;
+}
+
+.dropup:hover .dropdown-menu {
+    display: block;
+ }

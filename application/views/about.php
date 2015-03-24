@@ -121,7 +121,7 @@ border-radius: 100px;
                         <a href="about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="links">Links</a>
+                        <a href="resources">Resources</a>
                     </li>
                     <li class="page-scroll">
                         <a href="blog">Why Market Maps?</a>

@@ -108,7 +108,7 @@
                         <a href="about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="links">Links</a>
+                        <a href="resources">Resources</a>
                     </li>
                     <li class="page-scroll">
                         <a href="blog">Why Market Maps?</a>
@@ -206,7 +206,7 @@ play.  It should be used to illustrate that your company serves a variety of ind
 
 and/or markets, and signal that your potential market size is very large.</blockquote>
                   
-                        <img class="img-responsive center-block" src="img/petal2.png" alt="">
+                        <img class="img-responsive center-block" src="img/petal.png" alt="">
                     <span class="meta" style="font-weight:bold">Flow Charts</span>
                     <blockquote>Flow charts show your company’s position in a value chain – how you are filling a 
 

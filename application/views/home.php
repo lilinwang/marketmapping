@@ -12,7 +12,7 @@
 	<title >MarketMapping</title>
 	
 	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">	
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">		
+	
     <!-- MetisMenu CSS -->
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -21,18 +21,20 @@
     <link href="font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/css.css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="js/jquery.boutique_min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">	
+	<link rel="stylesheet" href="css/jquery-ui.css">	
+		
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
 	<script type="text/javascript" src="js/html2canvas.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-
+	
+	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+	
+	<!-- JQuery UI JavaScript-->	
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	
     <!-- Metis Menu Plugin JavaScript -->
     <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
 
@@ -67,7 +69,7 @@
 				var dropElem = ui.helper;//ui.draggable;				
 				dropElem.css('position', 'absolute');
 				var pos=ui.helper.position();
-				alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
+				//alert($(this).offset().left+","+$(this).offset().top+","+pos.left+","+pos.top+","+event.pageX+","+event.pageY+","+event.offsetX+","+event.offsetY);
 				if ((event.pageX-event.offsetX)<pos.left){
 					dropElem.css('top', pos.top+event.pageY-58);
 					dropElem.css('left', pos.left);
@@ -144,32 +146,50 @@
 			$('#canvas_title').val('');
 		} 			
 	}
+	var opt={				
+		height: 150,
+        width: 250,
+		autoOpen: false,		
+	}
 	function search_name(){	
 			//$('#logos').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
 			//$('#search-icon').toggleClass('fa-search fa-spinner');
 			if (document.getElementById("company_name").value==''){
-				alert("Please input company name!");
+				$("#dialog").html("<p>Please input company name!</p>");
+				var theDialog = $("#dialog").dialog(opt);					
+				var dialog = theDialog.dialog("open");
+				setTimeout(function() { dialog.dialog("close"); }, 1000);
 				return;
 			}
 			
 			if (document.getElementsByName(document.getElementById("company_name").value).length>0){
-				alert("Oops! You already searched this company!");
+				$("#dialog").html("<p>Oops! You already searched this company!</p>");
+				var theDialog = $("#dialog").dialog(opt);					
+				var dialog = theDialog.dialog("open");
+				setTimeout(function() { dialog.dialog("close"); }, 1000);
 				return;
 			}
 			$('#search-icon').html('<i class="fa fa-spin fa-spinner"></i>');
 	     	$.post("ajax/get_img", 
 			{								
-				crunchbase_url:"http://api.crunchbase.com/v/2/organization/"+document.getElementById("company_name").value+"?user_key=7ac52c190afddbbdc5a9227779b7064c",
-				anglelist_url:"http://api.angel.co/1/search/slugs?query="+document.getElementById("company_name").value
+				company:document.getElementById("company_name").value		
             },
 			function(data,status){
 				data = eval("(" + data + ")");
 				//console.log(data);
-				for (i=0;i<data.length;i++){
-					if (data[i]==0){
-						alert("Company not found! Try another one!");
-						break;						
-					};
+				///alert(data[0]+" "+data[1]);
+				if (data[0]==0 && data[1]==0){  					
+						$('#search-icon').html('<i class="fa fa-search"></i>');
+						$("#dialog").html("<p>Company not found! Try another one!</p>");
+						var theDialog = $("#dialog").dialog(opt);					
+						var dialog = theDialog.dialog("open");
+						setTimeout(function() { dialog.dialog("close"); }, 1000);										
+						return;		
+				}
+				for (i=0;i<data.length;i++){	
+					if (data[i]==0){ 
+						continue;
+					}
 					$("<a class=\"pull-front\" name=\""+document.getElementById("company_name").value+"\" href=\"#\"> <img src=\""+data[i]+"\" ></a>").appendTo("#logos").draggable({
 						//revert: 'invalid',
 						helper: function(){
@@ -189,9 +209,10 @@
 							//$('#'+$(this).attr('id')).draggable({revert: 'invalid'});
 						}       
 					});					                
-				}													
+				}											
 				$('#search-icon').html('<i class="fa fa-search"></i>');
 			});            
+			//$('#search-icon').html('<i class="fa fa-search"></i>');
 	};
 	function upload(){						
 		var file_data = $("#userfile").prop("files")[0];   		
@@ -235,7 +256,10 @@
                 }
 			});				            			     	
 		}else{
-			alert("Not file choosen!");
+			$("#dialog").html("<p>Not file choosen!</p>");
+			var theDialog = $("#dialog").dialog(opt);					
+			var dialog = theDialog.dialog("open");
+			setTimeout(function() { dialog.dialog("close"); }, 1000);
 		}
 	};			
 	
@@ -270,7 +294,7 @@
                         <a href="about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="links">Links</a>
+                        <a href="resources">Resources</a>
                     </li>
                     <li class="page-scroll">
                         <a href="blog">Why Market Maps?</a>
@@ -297,10 +321,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-							<div  class="input-group" style="width:260px;margin-left:15px;height:50px;">
+							<div  class="input-group" style="width:230px;margin-left:15px;height:50px;">
 							<span class="input-group-btn">
 								<span class="input-group-btn">
-								<input type="file" class="filestyle" id="userfile" name='userfile' >
+								<input type="file" class="filestyle" data-icon="false" data-buttonText="Choose Logo file" id="userfile" name='userfile' >
 								</span>
                                 <span class="input-group-btn">
 									
@@ -338,7 +362,7 @@
 							</ul>
 							</li>
 							
-							<li class="dropup same-line" style="width:85px;">
+							<li class="dropup same-line" style="width:90px;">
 							<a id="download" type="button" class="dropdown-toggle" data-toggle="dropup" href="#" >
 								<i class="fa fa-cloud-download fa-4x"></i>  
 							</a>
@@ -357,7 +381,7 @@
 							</ul>
 							</li>
 							<li class="dropup same-line" >
-							<button id="trash-can" class="btn btn-default" style="height:85px;width:80px;">
+							<button id="trash-can" class="btn btn-default" style="height:85px;width:75px;">
 								<i class="fa fa-trash-o fa-4x"></i>  
 							</button>
 																				
@@ -377,9 +401,9 @@
 				<button class="btn btn-default" style="margin-top:60px;float:right;"onclick="clear_all()">
                     Clear canvas
                 </button>
-				<div id="myImage" style="margin-top:40px;padding-bottom:20px;">
+				<div id="myImage">
 					<div class="map-title">
-						<input type="text" id="canvas_title" placeholder="Tittle of Map"  class="canvas-title">											
+						<input type="text" id="canvas_title" placeholder="Title of Map"  class="canvas-title">											
 					</div>
 					
 					<div id="squares">   
@@ -399,11 +423,11 @@
 						<ul id="axis_bottom_list"></ul> 			         		      	  				  
 					</div>
 					<div class="label-left">     			        
-						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:center" class="axis-label">
+						<input type="text" id="axis_left" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:left" class="axis-label">
 						<ul id="axis_left_list"></ul>
 					</div>
 					<div class="label-right">   	
-						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:center;"class="axis-label">
+						<input type="text" id="axis_right" onkeyup="autocomplet(this)" placeholder="X Axis" style="text-align:right;"class="axis-label">
 						<ul id="axis_right_list"></ul>
 					</div>
 				</div>               
@@ -415,7 +439,7 @@
     </div>
     <!-- /#wrapper -->
 
-    
+	<div id="dialog" title="Alerts">
 <script type="text/javascript">
 	$('#canvas-white').click(function(e) {
 		e.stopPropagation();
@@ -433,6 +457,8 @@
 		e.stopPropagation();
 		$('#squares').css('background','#ECFFFF');
 	});
+	
+	
 </script>
 </body>
 

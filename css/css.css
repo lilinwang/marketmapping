@@ -1,5 +1,4 @@
 
-
 #logos {
     overflow-y: auto;
 	overflow-x:hidden;
@@ -9,7 +8,11 @@
 	margin-left:15px;
 }
 
-
+#myImage{
+	margin-top:40px;padding-bottom:20px;
+	width:900px;
+	margin-left:50px;
+}
 .same-line{
 	display: block;
     float: left;
@@ -19,45 +22,45 @@
 
 	#squares{		
 		background:white;
-		width:900px;
+		
 		height:900px;		
 		border:1px solid #aaaaaa;	
-		margin-left:50px;		
+			
 	}
 	#trash-can{
 		z-index:-2;
 	}
 	.pull-front{
-		z-index:100000;
+		z-index:2;
 	}
 	.label-top{
-		position:absolute;
-		left:800px;
-		top:132px;
-		width:165px;		
+		position:relative;
+		left:452px;
+		top:-900px;
+		width:200px;		
 	}
 	.label-bottom{
-		position:absolute;
-		left:800px;
-		top:1002px;
-		width:150px;		
+		position:relative;
+		left:452px;
+		top:-55px;
+		width:200px;		
 	}
 	.label-left{
-		position:absolute;
-		left:350px;
-		top:582px;
-		width:150px;		
+		position:relative;		
+		top:-507px;
+		left:2px;
+		width:200px;		
 	}
 	.label-right{
-		position:absolute;
-		left:1080px;
-		top:582px;
-		width:150px;
+		position:relative;
+		left:698px;
+		top:-535px;
+		width:200px;
 		text-align:center;		
 	}
 
 .label-top ul ,.label-bottom ul,.label-left ul ,.label-right ul  {
-	width: 165px;	
+	width: 200px;	
 	position: absolute;
 	z-index: 9;
 	background: #f3f3f3;
@@ -72,8 +75,12 @@
 	background: #eaeaea;
 }	
 .axis-label{
-	border: 0px solid;background-color: transparent;height:28px;width:165px;font-size:18px;
+	border: 0px solid;background-color: transparent;height:28px;width:200px;font-size:18px;
 }
 .canvas-title{
 	width:100%;text-align:center;border: 0px solid;background-color: transparent;height:36px;font-size:24px;
 }
+
+.dropup:hover .dropdown-menu {
+    display: block;
+ }

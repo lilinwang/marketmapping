@@ -51,49 +51,77 @@ class Ajax extends CI_Controller {
 	}
 	function get_img(){	
 			//get the image from Crunchbase
-			$data=file_get_contents($_POST['crunchbase_url']);
+			$data=@file_get_contents("http://api.crunchbase.com/v/2/organization/".$_POST['company']."?user_key=7ac52c190afddbbdc5a9227779b7064c");
 			$array=json_decode($data,true);
-			if (isset($array['data']['error'])){
+			if (isset($array['data']['error'])){				
 				$response[0]=0;
-				echo json_encode($response);
-				return;
-			}
-			$name=$array['data']['properties']['name']."_crunchbase";
-			$originalimg=$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
+				//echo json_encode($response);
+				//return;
+			}else{				
+				$name=$array['data']['properties']['name']."_crunchbase";
+				if (isset($array['data']['relationships']['primary_image']['items'][0]['path']) && isset($array['metadata']['image_path_prefix'])){
+					$originalimg=$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
 						
-			$source='http://localhost/marketmapping/timthumb?src='.$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
-			$source=$source."&h=100&w=100&zc=2";
+					$source='http://localhost/marketmapping/timthumb?src='.$array['metadata']['image_path_prefix'].$array['data']['relationships']['primary_image']['items'][0]['path'];
+					$source=$source."&h=100&w=100&zc=2";
 					
-			$metasource=getimagesize($source);
-			switch ($metasource[2]){
-				case 2:
-					$dest='./image/'.$name.'.jpg';
-					break;
-				case 3:
-					$dest='./image/'.$name.'.png';
-					break;
-			}									
-			copy($source, $dest); 
-			$response[0]=$dest;
-			
-			//get the image from Anglelist
-			//1) get the company id from AngleList
-			$data=file_get_contents($_POST['anglelist_url']);
-			$array=json_decode($data,true);
-			$name=$array['name']."_anglelist";			
-			$id=$array['id'];
-			//2) get the image address from AngleList
-			$data=file_get_contents("http://api.angel.co/1/startups/".$id);
-			$array=json_decode($data,true);
-			if (isset($array['data']['error'])){
-				$response[1]=0;
-				echo json_encode($response);
-				return;
+					$metasource=getimagesize($source);
+					switch ($metasource[2]){
+						case 2:
+							$dest='./image/'.$name.'.jpg';
+							break;
+						case 3:
+							$dest='./image/'.$name.'.png';
+							break;
+					}									
+					copy($source, $dest); 
+					$response[0]=$dest;
+				}else {
+					$response[0]=0;
+				}
 			}
 			
-			$originalimg=substr($array['logo_url'],5);
+			//get the image from Anglelist	
+			$site="http://api.angel.co/1/search/slugs?query=".$_POST['company'];
+			$data=@file_get_contents($site);
+			//echo $data;
+			if ($data===FALSE){										
+				$data=@file_get_contents("http://api.angel.co/1/search?query=".$_POST['company']."&type=Startup");
+				
+				if ($data===FALSE || $data=="[]"){
+					$response[1]=0;
+					echo json_encode($response);
+					return;
+				}
+				else{													
+					$array=json_decode($data,true);						
+					if (isset($array[0]['pic'])){
+						$originalimg=substr($array[0]['pic'],5);										
+					}else{
+						$response[1]=0;
+						echo json_encode($response);
+						return;
+					}
+				}
+			}
+			else{
+				
+				$array=json_decode($data,true);						
+				$id=$array['id'];			
+				$data=@file_get_contents("http://api.angel.co/1/startups/".$id);
+				
+				$array=json_decode($data,true);						
+				if (isset($array['logo_url'])){
+					$originalimg=substr($array['logo_url'],5);			
+				}else{
+					$response[1]=0;
+					echo json_encode($response);
+					return;
+				}
+			}								
 			
 			//echo $originalimg;			
+			$name=$_POST['company']."_anglelist";
 			$source='http://localhost/marketmapping/timthumb?src=http'.$originalimg;
 			//echo $source;
 			$source=$source."&h=100&w=100&zc=2";						
@@ -110,7 +138,7 @@ class Ajax extends CI_Controller {
 			copy($source, $dest); 
 			$response[1]=$dest;
 			echo json_encode($response);	
-								
+						
 			/*$meta=getimagesize($dest);
 			switch ($meta[2]){
 				case 2:
@@ -142,7 +170,7 @@ class Ajax extends CI_Controller {
 
 			imagepng($newPicture,$dest);
 			imagedestroy($newPicture);
-			imagedestroy($picture);*/							
+			imagedestroy($picture);*/					
 	}
     function get_focus()
 	{

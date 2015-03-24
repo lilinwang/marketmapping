@@ -18,7 +18,7 @@
     <link href="css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -60,7 +60,7 @@
                         <a href="#about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#links">Links</a>
+                        <a href="resources">Resources</a>
                     </li>
                     <li class="page-scroll">
                         <a href="blog">Why Market Maps?</a>
@@ -86,7 +86,7 @@
                             <i class="fa fa-line-chart"></i> Go to Demo
                             </a>
                          </div>
-                        <span class="skills">MarketMap.me is a free to use graphing tool for plotting market maps.</span>
+                        <span class="skills">MarketMap.me is a free graphing tool for plotting market maps.</span>
                             <span class="skills">Create a formatted map with competitor logos in less than one minute!</span>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>About MarketMap</h3>
-                        <p>MarketMap is a free to use graphing tool for plotting compeitor maps. We make it easy to incorporate logos in your pitch deck</p>
+                        <p>MarketMap is a free graphing tool for plotting compeitor maps. We make it easy to incorporate logos in your pitch deck</p>
                     </div>
                 </div>
             </div>
